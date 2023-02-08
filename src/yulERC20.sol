@@ -34,4 +34,21 @@ contract YulERC20 {
         }
     }
 
+    function symbol() public pure returns(string memory){
+        assembly {
+            let memptr := mload(0x40)
+            mstore(memptr, 0x20)
+            mstore(add(memptr, 0x20), symbolLength)
+            mstore(add(memptr, 0x20), symbolData)
+            return(memptr, 0x60)
+        }
+    }
+
+    function decimal() public pure returns(uint8){
+        assembly {
+            mstore(0x00, 18)
+            return(0x00, 0x20)
+        }
+    }
+
 }
