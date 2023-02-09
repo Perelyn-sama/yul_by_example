@@ -51,4 +51,22 @@ contract YulERC20 {
         }
     }
 
+    function balanceOf(address) public view returns(uint256){
+        assembly{
+            // Store the calldate after 4 to 0x00
+            mstore(0x00, calldataload(4))
+
+            // Store the pointer of the calldataload(4) to 0x20
+            mstore(0x20, 0x00)
+
+            // keccak256(0x00, 0x40) hash 0x00 to 0x40 and generate a key
+            // sload(keccak256(0x00, 0x40)) load what's in the key
+            // mstore(0x00, sload(keccak256(0x00, 0x40))) store the value of the key in 0x00
+            mstore(0x00, sload(keccak256(0x00, 0x40)))
+
+            // Return 32 bytes from 0x00
+            return(0x00, 0x20)
+        }
+    }
+
 }
