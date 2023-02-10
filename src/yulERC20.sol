@@ -90,8 +90,13 @@ contract YulERC20 {
                 revert(0x00, 0x04)
             }
 
-            // reduce caller balance
+            if eq(caller(), receiver){
+                revert(0x00, 0x00)
+            }
+
+            // decrease caller balance
             let newCallerBalance := sub(callerBalance, value)
+            sstore(callerBalanceSlot, newCallerBalance)
 
             // load receiver balance
             mstore(memptr, receiver)
@@ -104,7 +109,6 @@ contract YulERC20 {
             let newReciverBalance := add(receiverBalance, value)
 
             // store
-            sstore(callerBalanceSlot, newCallerBalance)
             sstore(receiverBalanceSlot, newReciverBalance)
 
             //log
