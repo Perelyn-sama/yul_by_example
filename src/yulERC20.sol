@@ -17,14 +17,19 @@ bytes32 constant InsufficientBalanceSelector = 0xf4d678b800000000000000000000000
 // bytes4(keccak256("InsufficientAllowance(address, address)")) 0xf180d8f9
 bytes32 constant InsufficientAllowanceSelector = 0xf180d8f900000000000000000000000000000000000000000000000000000000;
 
-    error InsufficientBalance();
-    error InsufficientAllowance(address owner, address spender);
+error InsufficientBalance();
+error InsufficientAllowance(address owner, address spender);
+
+bytes32 constant transferHash = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef;
 
 // @title Yul ERC20
 // @author Some random Dude
 
 contract YulERC20 {
-    function name() public pure returns(string memory) {
+    // 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
+    event Transfer(address indexed sender, address indexed receiver, uint256 amount);
+
+    function name() public pure returns (string memory) {
         assembly {
             let memptr := mload(0x40)
             mstore(memptr, 0x20) // String pointer
@@ -34,7 +39,7 @@ contract YulERC20 {
         }
     }
 
-    function symbol() public pure returns(string memory){
+    function symbol() public pure returns (string memory) {
         assembly {
             let memptr := mload(0x40)
             mstore(memptr, 0x20)
@@ -44,15 +49,15 @@ contract YulERC20 {
         }
     }
 
-    function decimal() public pure returns(uint8){
+    function decimal() public pure returns (uint8) {
         assembly {
             mstore(0x00, 18)
             return(0x00, 0x20)
         }
     }
 
-    function balanceOf(address) public view returns(uint256){
-        assembly{
+    function balanceOf(address) public view returns (uint256) {
+        assembly {
             // Store the calldate after 4 to 0x00
             mstore(0x00, calldataload(4))
 
@@ -68,5 +73,4 @@ contract YulERC20 {
             return(0x00, 0x20)
         }
     }
-
 }
