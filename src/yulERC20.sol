@@ -73,4 +73,47 @@ contract YulERC20 {
             return(0x00, 0x20)
         }
     }
+
+    function transfer(address receiver, uint256 value) public returns (bool) {
+        assembly {
+            // mem stuff
+            let memptr := mload(0x40)
+
+            // load caller balance, assert sufficient
+            mstore(memptr, caller())
+            mstore(add(memptr, 0x20), 0x00)
+            let callerBalanceSlot := keccak256(memptr, 0x40)
+            let callerBalance := sload(callerBalanceSlot)
+
+            if lt(callerBalance, value) {
+                mstore(0x00, InsufficientBalanceSelector)
+                revert(0x00, 0x04)
+            }
+
+            // reduce caller balance
+            let newCallerBalance := sub(callerBalance, value)
+
+            // load receiver balance
+            mstore(memptr, receiver)
+            mstore(add(memptr, 0x20), 0x00)
+
+            let receiverBalanceSlot := keccak256(memptr, 0x40)
+            let receiverBalance := sload(receiverBalanceSlot)
+
+            // increase reciver balance
+            let newReciverBalance := add(receiverBalance, value)
+
+            // store
+            sstore(callerBalanceSlot, newCallerBalance)
+            sstore(receiverBalanceSlot, newReciverBalance)
+
+            //log
+            mstore(0x00, value)
+            log3(0x00, 0x20, transferHash, caller(), receiver)
+
+            // return
+            mstore(0x00, 0x01)
+            return(0x00, 0x20)
+        }
+    }
 }
