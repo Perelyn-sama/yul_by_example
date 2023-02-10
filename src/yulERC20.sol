@@ -21,6 +21,7 @@ error InsufficientBalance();
 error InsufficientAllowance(address owner, address spender);
 
 bytes32 constant transferHash = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef;
+bytes32 constant approvalHash = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925;
 
 // @title Yul ERC20
 // @author Some random Dude
@@ -28,6 +29,8 @@ bytes32 constant transferHash = 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a1
 contract YulERC20 {
     // 0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef
     event Transfer(address indexed sender, address indexed receiver, uint256 amount);
+
+    event Approval(address indexed owner, address indexed spender, uint256 amount);
 
     function name() public pure returns (string memory) {
         assembly {
@@ -132,6 +135,28 @@ contract YulERC20 {
 
             let allowanceValue := sload(allowanceSlot)
             mstore(0x00, allowanceValue)
+            return(0x00, 0x20)
+        }
+    }
+
+    function approve(address spender, uint256 amount) public returns (bool) {
+        assembly {
+            mstore(0x00, caller())
+            mstore(0x20, 0x01)
+            let innerHash := keccak256(0x00, 0x20)
+
+            mstore(0x00, spender)
+            mstore(0x20, innerHash)
+            let allowanceSlot := keccak256(0x00, 0x40)
+
+            sstore(allowanceSlot, amount)
+
+            // log
+            mstore(0x00, amount)
+            log3(0x00, 0x20, approvalHash, caller(), spender)
+
+            // return true
+            mstore(0x00, 0x01)
             return(0x00, 0x20)
         }
     }
