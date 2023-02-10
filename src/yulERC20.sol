@@ -90,9 +90,7 @@ contract YulERC20 {
                 revert(0x00, 0x04)
             }
 
-            if eq(caller(), receiver){
-                revert(0x00, 0x00)
-            }
+            if eq(caller(), receiver) { revert(0x00, 0x00) }
 
             // decrease caller balance
             let newCallerBalance := sub(callerBalance, value)
@@ -117,6 +115,23 @@ contract YulERC20 {
 
             // return
             mstore(0x00, 0x01)
+            return(0x00, 0x20)
+        }
+    }
+
+    // keccak256(spender, keccak256(owner, slot)))
+    function allowance(address owner, address spender) public view returns (uint256) {
+        assembly {
+            mstore(0x00, owner)
+            mstore(0x20, 0x01)
+            let innerHash := keccak256(0x00, 0x20)
+
+            mstore(0x00, spender)
+            mstore(0x20, innerHash)
+            let allowanceSlot := keccak256(0x00, 0x40)
+
+            let allowanceValue := sload(allowanceSlot)
+            mstore(0x00, allowanceValue)
             return(0x00, 0x20)
         }
     }
