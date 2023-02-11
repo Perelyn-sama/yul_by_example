@@ -73,6 +73,13 @@ contract YulERC20 {
         }
     }
 
+    function totalSupply() public view  returns (uint256){
+        assembly {
+            mstore(0x00, sload(0x02))
+            return(0x00, 0x20)
+        }
+    }
+
     function balanceOf(address) public view returns (uint256) {
         assembly {
             // Store the calldate after 4 to 0x00
