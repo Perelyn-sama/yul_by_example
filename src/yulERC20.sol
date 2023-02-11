@@ -35,6 +35,17 @@ contract YulERC20 {
 
     event Approval(address indexed owner, address indexed spender, uint256 amount);
 
+    // account -> balance
+    // `slot = keccak(account, 0x00))`
+    mapping(address => uint256) internal _balances;
+
+    // owner -> spender -> allowance
+    // `slot = keccak256(owner, keccak256(spender, 0x01))`
+    mapping(address => mapping(address => uint256)) internal _allowances;
+
+    // `slot = 0x02`
+    uint256 internal _totalSupply;
+
     function name() public pure returns (string memory) {
         assembly {
             let memptr := mload(0x40)
