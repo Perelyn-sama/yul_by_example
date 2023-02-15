@@ -46,6 +46,20 @@ contract YulERC20 {
     // `slot = 0x02`
     uint256 internal _totalSupply;
 
+    constructor() {
+        assembly {
+            mstore(0x00, caller())
+            mstore(0x20, 0x00)
+            let slot := keccak256(0x00, 0x40)
+            sstore(slot, maxUint256)
+
+            sstore(0x20, maxUint256)
+
+            mstore(0x00, maxUint256)
+            log3(0x00, 0x20, transferHash, 0x00, caller())
+        }
+    }
+
     function name() public pure returns (string memory) {
         assembly {
             let memptr := mload(0x40)
