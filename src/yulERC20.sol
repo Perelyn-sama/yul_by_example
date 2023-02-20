@@ -87,7 +87,7 @@ contract YulERC20 {
         }
     }
 
-    function totalSupply() public view  returns (uint256){
+    function totalSupply() public view returns (uint256) {
         assembly {
             mstore(0x00, sload(0x02))
             return(0x00, 0x20)
@@ -196,12 +196,12 @@ contract YulERC20 {
         }
     }
 
-    function transferFrom(address sender, address receiver, uint256 amount ) public returns (bool){
+    function transferFrom(address sender, address receiver, uint256 amount) public returns (bool) {
         assembly {
             let memptr := mload(0x40)
 
             mstore(0x00, sender)
-            mstore(0x20,  0x01)
+            mstore(0x20, 0x01)
             let innerHash := keccak256(0x00, 0x20)
 
             mstore(0x00, caller())
@@ -210,40 +210,38 @@ contract YulERC20 {
 
             let callerAllowance := sload(allowanceSlot)
 
-            if lt(callerAllowance, amount){
+            if lt(callerAllowance, amount) {
                 mstore(memptr, InsufficientAllowanceSelector)
                 mstore(add(memptr, 0x04), sender)
                 mstore(add(memptr, 0x24), caller())
                 revert(memptr, 0x44)
             }
 
-            if lt(callerAllowance, maxUint256){
-                sstore(allowanceSlot, sub(callerAllowance, amount))
-            }
+            if lt(callerAllowance, maxUint256) { sstore(allowanceSlot, sub(callerAllowance, amount)) }
 
-        // load sender  balance, assert sufficient
+            // load sender  balance, assert sufficient
             mstore(memptr, sender)
             mstore(add(memptr, 0x20), 0x00)
             let senderBalanceSlot := keccak256(memptr, 0x40)
-            let senderBalance  := sload(senderBalanceSlot)
+            let senderBalance := sload(senderBalanceSlot)
 
-            if lt(senderBalance, amount){
+            if lt(senderBalance, amount) {
                 mstore(0x00, InsufficientBalanceSelector)
                 revert(0x00, 0x04)
             }
 
-            sstore(senderBalanceSlot, sub(senderBalance, amount ))
+            sstore(senderBalanceSlot, sub(senderBalance, amount))
 
-        // load receiver  balance, assert sufficient
+            // load receiver  balance, assert sufficient
             mstore(memptr, receiver)
             mstore(add(memptr, 0x20), 0x00)
             let receiverBalanceSlot := keccak256(memptr, 0x40)
-            let receiverBalance  := sload(receiverBalanceSlot)
+            let receiverBalance := sload(receiverBalanceSlot)
 
-            sstore(receiverBalanceSlot, add(receiverBalance , amount ))
+            sstore(receiverBalanceSlot, add(receiverBalance, amount))
 
             mstore(0x00, amount)
-            log3(0x00, 0x20, transferHash,  sender, receiver)
+            log3(0x00, 0x20, transferHash, sender, receiver)
 
             mstore(0x00, 0x01)
             return(0x00, 0x20)
