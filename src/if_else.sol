@@ -5,9 +5,10 @@ contract IfElse {
     function foo(uint256 x) public pure returns (uint256 res) {
         assembly {
             if lt(x, 10) { res := 0 }
-            if lt(x, 20) { res := 1 }
-            res := 2
+            if gt(x, 10) { res := 1 }
         }
         return res;
     }
 }
+
+// TODO Add function that uses switch
