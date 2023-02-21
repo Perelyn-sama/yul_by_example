@@ -5,7 +5,7 @@ contract Mapping {
     // Mapping from address to uint
     mapping(address => uint256) public myMap;
 
-    function asmGet(address _addr) public view returns (uint256) {
+    function get(address _addr) public view returns (uint256) {
         assembly {
             let memptr := mload(0x40)
 
@@ -19,7 +19,7 @@ contract Mapping {
         }
     }
 
-    function asmSet(address _addr, uint256 _i) public {
+    function set(address _addr, uint256 _i) public {
         assembly {
             let memptr := mload(0x40)
 
@@ -31,10 +31,42 @@ contract Mapping {
             sstore(addrBalanceSlot, _i)
         }
     }
+}
 
-    // TODO find a way to implement this in assembly 
-    // function remove(address _addr) public {
-    //     // Reset the value to the default value.
-    //     delete myMap[_addr];
-    // }
+contract NestedMapping {
+    // Nested mapping (mapping from address to another mapping)
+    mapping(address => mapping(uint256 => bool)) public nested;
+
+    function get(address _addr, uint256 _i) public view returns (bool) {
+        assembly {
+            let memptr := mload(0x40)
+
+            mstore(memptr, _addr)
+            mstore(add(memptr, 0x20), 0x00)
+            let innerHash := keccak256(memptr, 0x40)
+
+            mstore(memptr, _i)
+            mstore(add(memptr, 0x20), innerHash)
+            let slot := keccak256(memptr, 0x40)
+
+            mstore(0x00, sload(slot))
+            return(0x00, 0x20)
+        }
+    }
+
+    function set(address _addr1, uint256 _i, bool _boo) public {
+        assembly {
+            let memptr := mload(0x40)
+
+            mstore(memptr, _addr1)
+            mstore(add(memptr, 0x20), 0x00)
+            let innerHash := keccak256(memptr, 0x40)
+
+            mstore(memptr, _i)
+            mstore(add(memptr, 0x20), innerHash)
+            let slot := keccak256(memptr, 0x40)
+
+            sstore(slot, _boo)
+        }
+    }
 }
