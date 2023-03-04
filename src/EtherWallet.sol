@@ -34,7 +34,7 @@ contract EtherWallet {
 
     function getBalance() external view returns (uint) {
         assembly{
-            mstore(0x00, balance(caller()))
+            mstore(0x00, balance(address()))
             return(0x00, 0x20)
         }
     }
