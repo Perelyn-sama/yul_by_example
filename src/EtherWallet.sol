@@ -8,32 +8,24 @@ contract EtherWallet {
     constructor() {
         assembly {
             sstore(ownerSlot.slot, caller())
-        }  
-           
+        }
     }
 
     receive() external payable {}
 
-    function withdraw(uint _amount) external returns( uint out) {
-
-        assembly{
-
+    function withdraw(uint256 _amount) external {
+        assembly {
             if iszero(eq(caller(), sload(ownerSlot.slot))) {
                 mstore(0x00, UnauthorizedSelector)
                 revert(0x00, 0x04)
             }
 
-            out := call(gas(), caller(), _amount, 0, 0, 0, 0)
-            if iszero(out) {
-                mstore(0x00, 0x90b8ec18)
-                revert(0x1c, 0x04)
-            }
-
+            pop(call(gas(), caller(), _amount, 0, 0, 0, 0))
         }
     }
 
-    function getBalance() external view returns (uint) {
-        assembly{
+    function getBalance() external view returns (uint256) {
+        assembly {
             mstore(0x00, balance(address()))
             return(0x00, 0x20)
         }
