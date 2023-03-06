@@ -8,25 +8,42 @@ contract Counter {
 
     // Function to get the current count
     function get() public view returns (uint256) {
-        uint256 count;
         assembly {
-            count := sload(0)
+            // assign count variable slot to countSlot
+            let countSlot := count.slot
+
+            // store the value countSlot to memory at 0x00
+            // sload to load the value in countSlot
+            // mstore to store the value in countSlot to 0x00
+            mstore(0x00, sload(countSlot))
+
+            // return first 32 bytes
+            return(0x00, 0x20)
         }
-        return count;
     }
 
     // Function to increment count by 1
     function inc() public {
         assembly {
-            sstore(0, add(sload(0), 1))
+            // assign count variable slot to countSlot
+            let countSlot := count.slot
+
+            // Increment the value in countSlot with 1 - add(sload())
+            // then store the result in storage at countSlot - sstore
+            sstore(countSlot, add(sload(countSlot), 1))
         }
     }
 
     // Function to decrement count by 1
     function dec() public {
-        // yul does not prevent underflow/overflow so this will work
+        // yul does not prevent underflow/overflow so this will work when count is zero
         assembly {
-            sstore(0, sub(sload(0), 1))
+            // assign count variable slot to countSlot
+            let countSlot := count.slot
+
+            // Decrement the value in countSlot with 1 - add(sload())
+            // then store the result in storage at countSlot - sstore
+            sstore(countSlot, sub(sload(countSlot), 1))
         }
     }
 }
