@@ -5,7 +5,7 @@ contract SendEther {
 
     constructor() payable {}
     
-    function transfer(uint256 amount, address to) external {
+    function transferEther(uint256 amount, address to) external {
         assembly {
             let s := call(gas(), to, amount, 0, 0, 0, 0)
             if iszero(s) {
