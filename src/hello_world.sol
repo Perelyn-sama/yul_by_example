@@ -15,7 +15,7 @@ contract HelloWorld {
             // Store the string in mem[0x40]
             mstore(0x40, greet)
             // Returns the bytes from mem[offset to offset+size]
-            return(0x00,0x60)
+            return(0x00, 0x60)
         }
     }
 }

@@ -3,21 +3,20 @@ pragma solidity ^0.8.17;
 
 // https://solidity-by-example.org/first-app
 contract Counter {
-    // slot 0
+    // Slot 0.
     uint256 public count;
 
-    // Function to get the current count
+    // Function to get the current count.
     function get() public view returns (uint256) {
         assembly {
-            // assign count variable slot to countSlot
-            let countSlot := count.slot
+            // The value of the variable `count` is stored at slot 0, which is known
+            // by loading count.slot.
+            // Once we have slot for `count` we then call an sload(slot_for_count) to
+            // retrieve the value for count.
+            // Once this is done, we store the value retrieved at location 0x00 in memory.
+            mstore(0x00, sload(count.slot))
 
-            // store the value countSlot to memory at 0x00
-            // sload to load the value in countSlot
-            // mstore to store the value in countSlot to 0x00
-            mstore(0x00, sload(countSlot))
-
-            // return first 32 bytes
+            // Return the first 32 bytes starting from location 0x00.
             return(0x00, 0x20)
         }
     }
@@ -25,24 +24,36 @@ contract Counter {
     // Function to increment count by 1
     function inc() public {
         assembly {
-            // assign count variable slot to countSlot
+            // Assign count variable slot to countSlot.
             let countSlot := count.slot
 
-            // Increment the value in countSlot with 1 - add(sload())
-            // then store the result in storage at countSlot - sstore
+            // We update the value at the `count` slot by incrementing the
+            // current value at the slot by 1, then calling an sstore() to overwrite the
+            // value at slot 0.
+            // However, this doesn't check for overflows and underflows, so we must make sure that
+            // we do not go beyond the limit for our type maximum before making the update.
+            // We are working with uint256, so the max is 0x("ff" * 32).
+            if eq(sload(countSlot), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) {
+                revert(0, 0)
+            }
             sstore(countSlot, add(sload(countSlot), 1))
         }
     }
 
     // Function to decrement count by 1
     function dec() public {
-        // yul does not prevent underflow/overflow so this will work when count is zero
         assembly {
-            // assign count variable slot to countSlot
+            // Assign count variable slot to countSlot.
             let countSlot := count.slot
 
-            // Decrement the value in countSlot with 1 - add(sload())
-            // then store the result in storage at countSlot - sstore
+            // We update the value at the `count` slot by decrementing the
+            // current value at the slot by 1, then calling an sstore() to overwrite the
+            // value at slot 0.
+            // However, this doesn't check for overflows and underflows, so we must make sure that
+            // we do not go below 0 before making the update.
+            if iszero(sload(countSlot)) {
+                revert(0, 0)
+            }
             sstore(countSlot, sub(sload(countSlot), 1))
         }
     }

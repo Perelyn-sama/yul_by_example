@@ -3,15 +3,15 @@ pragma solidity ^0.8.17;
 
 contract Mapping {
     // Mapping from address to uint
-    mapping(address => uint256) public myMap;
+    mapping(address => uint256) public myMap; // 0
 
     function get(address _addr) public view returns (uint256) {
         assembly {
-            let memptr := mload(0x40)
+            let memptr := mload(0x40) // 0x80
 
-            mstore(memptr, _addr)
-            mstore(add(memptr, 0x20), 0x00)
-            let addrBalanceSlot := keccak256(memptr, 0x40)
+            mstore(memptr, _addr) // Store the address @ 0x80.
+            mstore(add(memptr, 0x20), 0x00) // Store 0 @ 0xa0.
+            let addrBalanceSlot := keccak256(memptr, 0x40) // keccak256(0x80, 0x40)
             let addrBalance := sload(addrBalanceSlot)
 
             mstore(0x00, addrBalance)
