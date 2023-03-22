@@ -58,7 +58,8 @@ contract PackedStruct {
         }
     }
 
-    // We are going to use indexes 0 - 5 for a to f respectively.
+    // We are going to use indexes 0 - 5 for a to f respectively, just for fun.
+    // This is to just show how they are retrieved from storage.
     function getFromPacking(uint8 val) public view returns (uint256) {
         assembly {
             let ourStruct := sload(0)
