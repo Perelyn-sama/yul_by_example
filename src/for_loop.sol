@@ -8,11 +8,13 @@ contract Loop {
             for { let i := 0 } lt(i, 10) { i := add(i, 1) } {
                 x := add(x, 1)
                 // these next two lines would cancel each other out
-                if eq(x, 5) { continue }
-                if eq(x, 5) { break }
+                if eq(x, 5) { continue } // Skip value.
+
+                // This will not run because 5 is skipped.
+                if eq(x, 5) { break } // Stop loop.
             }
             mstore(0x00, x)
-            return(0x00, 0x20)
+            return(0x00, 0x20) // Returns 10.
         }
     }
 }

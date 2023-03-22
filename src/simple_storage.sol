@@ -3,12 +3,11 @@ pragma solidity ^0.8.17;
 
 // https://solidity-by-example.org/state-variables/
 contract SimpleStorage {
-    // State variable to store a number
-    uint256 public num;
+    // State variable to store a number.
+    uint256 public num; // Slot 0.
 
     // You need to send a transaction to write to a state variable.
     function set(uint256 _num) public {
-        num = _num;
         assembly {
             sstore(0, _num)
         }
