@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "../src/SendEther.sol";
+import "../src/Send Ether.sol";
 
 contract SendEtherTest is Test {
 

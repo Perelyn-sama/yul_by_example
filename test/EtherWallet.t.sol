@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "../src/EtherWallet.sol";
+import "../src/Ether Wallet.sol";
 
 contract EtherWalletTest is Test {
 

@@ -3,15 +3,15 @@
 Basically I'm trying to make [Solidity by example](https://solidity-by-example.org/)
 
 ### Contracts Implemented so far
-- [Hello World](/src/hello_world.sol)
+- [Hello World](/src/Hello World.sol)
 -  [Counter](/src/Counter.sol)
--  [Conditional](src/for_loop.sol)
--  [Mapping](/src/mapping.sol)
--  [Array](/src/array.sol)
--  [Simple Storage](/src/simple_storage.sol)
--  [EtherWallet](/src/EtherWallet.sol)
-- [Types](/src/types.sol)
-- [ERC20](/src/yulERC20.sol)
+-  [Conditional](src/For Loop.sol)
+-  [Mapping](/src/Mapping.sol)
+-  [Array](/src/Array.sol)
+-  [Simple Storage](/src/Simple Storage.sol)
+-  [EtherWallet](/src/Ether Wallet.sol)
+- [Types](/src/Types.sol)
+- [ERC20](/src/YulERC20.sol)
 
 ### Contracts to work on 
 - Events.sol
