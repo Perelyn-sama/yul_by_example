@@ -10,6 +10,18 @@ contract IfElse {
         }
         return res;
     }
-}
 
-// TODO Add function that uses switch
+    function switchFunction(uint256 x) public pure returns (bool isTrue) {
+        assembly {
+            switch lt(x, 79)
+            // If true.
+            case 1 {
+                isTrue := 0x00000000000000000000000000000000000000000000000000000000000000000001
+            }
+            // Otherwise.
+            default {
+                isTrue := 0x00000000000000000000000000000000000000000000000000000000000000000000
+            }
+        }
+    }
+}
