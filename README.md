@@ -1,19 +1,23 @@
 ## Yul By Example 
 
-Basically I'm trying to make [Solidity by example](https://solidity-by-example.org/)
+Basically we're trying to make [Solidity by example](https://solidity-by-example.org/).
 
 ### Contracts Implemented so far
-- [Hello World](/src/Hello World.sol)
--  [Counter](/src/Counter.sol)
--  [Conditional](src/For Loop.sol)
--  [Mapping](/src/Mapping.sol)
--  [Array](/src/Array.sol)
--  [Simple Storage](/src/Simple Storage.sol)
--  [EtherWallet](/src/Ether Wallet.sol)
+- [Array](/src/Array.sol)
+- [Conditionals](/src/Conditionals.sol)
+- [Counter](/src/Counter.sol)
+- [EtherWallet](/src/EtherWallet.sol)
+- [For Loop](src/ForLoop.sol)
+- [Hello World](/src/HelloWorld.sol)
+- [Mapping](/src/Mapping.sol)
+- [Send Ether](/src/SendEther.sol)
+- [Simple Storage](/src/SimpleStorage.sol)
+- [Structs](/src/Structs.sol)
 - [Types](/src/Types.sol)
 - [ERC20](/src/YulERC20.sol)
 
-### Contracts to work on 
-- Events.sol
-- Errors.sol 
-- SendEther.sol
+### Acknowledgements
+
+These contracts were inspired by or directly modified from many sources, primarily:
+- [Solidity By Example](https://solidity-by-example.org/)
+- [RareSkills](https://github.com/RareSkills/Udemy-Yul-Code)
