@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.17;
 
-contract IfElse {
-    function foo(uint256 x) public pure returns (uint256 res) {
+contract Conditionals {
+    function IfElse(uint256 x) public pure returns (uint256 res) {
         assembly {
             // There are no parentheses in the if statements, and there are no elses, rather, use switch.
             if lt(x, 10) { res := 0 }
