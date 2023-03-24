@@ -33,9 +33,7 @@ contract Counter {
             // However, this doesn't check for overflows and underflows, so we must make sure that
             // we do not go beyond the limit for our type maximum before making the update.
             // We are working with uint256, so the max is 0x("ff" * 32).
-            if eq(sload(countSlot), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) {
-                revert(0, 0)
-            }
+            if eq(sload(countSlot), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { revert(0, 0) }
             sstore(countSlot, add(sload(countSlot), 1))
         }
     }
@@ -51,9 +49,7 @@ contract Counter {
             // value at slot 0.
             // However, this doesn't check for overflows and underflows, so we must make sure that
             // we do not go below 0 before making the update.
-            if iszero(sload(countSlot)) {
-                revert(0, 0)
-            }
+            if iszero(sload(countSlot)) { revert(0, 0) }
             sstore(countSlot, sub(sload(countSlot), 1))
         }
     }

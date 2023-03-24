@@ -5,7 +5,6 @@ import "forge-std/Test.sol";
 import "../src/SendEther.sol";
 
 contract SendEtherTest is Test {
-
     // Target Contract
     SendEther public sendEther;
 

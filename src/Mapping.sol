@@ -11,12 +11,12 @@ contract Mapping {
             let memptr := mload(0x40)
 
             // Store `_addr` in memory location `memptr`.
-            mstore(memptr, _addr) 
+            mstore(memptr, _addr)
 
             // Store the myMap's slot in memory location memptr+0x20
             mstore(add(memptr, 0x20), myMap.slot)
 
-            // Hash the content in memory location `memptr` to `memptr+0x40` 
+            // Hash the content in memory location `memptr` to `memptr+0x40`
             // assign hash to var `addrBalanceSlot`
             let addrBalanceSlot := keccak256(memptr, 0x40)
 
@@ -43,7 +43,7 @@ contract Mapping {
             // Store the myMap's slot in memory location memptr+0x20
             mstore(add(memptr, 0x20), myMap.slot)
 
-            // Hash the content in memory location `memptr` to `memptr+0x40` 
+            // Hash the content in memory location `memptr` to `memptr+0x40`
             // assign hash to var `addrBalanceSlot`
             let addrBalanceSlot := keccak256(memptr, 0x40)
 
@@ -68,7 +68,7 @@ contract NestedMapping {
             // Store the nested's slot in memory location memptr+0x20
             mstore(add(memptr, 0x20), nested.slot)
 
-            // Hash the content in memory location `memptr` to `memptr+0x40` 
+            // Hash the content in memory location `memptr` to `memptr+0x40`
             // assign hash to var `innerHash`
             let innerHash := keccak256(memptr, 0x40)
 
@@ -78,7 +78,7 @@ contract NestedMapping {
             // Store `innerHash` in memory location memptr+0x20
             mstore(add(memptr, 0x20), innerHash)
 
-            // Hash the content in memory location `memptr` to `memptr+0x40` 
+            // Hash the content in memory location `memptr` to `memptr+0x40`
             // assign hash to var `slot`
             let slotHash := keccak256(memptr, 0x40)
 
@@ -102,7 +102,7 @@ contract NestedMapping {
             // Store the nested's slot in memory location memptr+0x20
             mstore(add(memptr, 0x20), nested.slot)
 
-            // Hash the content in memory location `memptr` to `memptr+0x40` 
+            // Hash the content in memory location `memptr` to `memptr+0x40`
             // assign hash to var `innerHash`
             let innerHash := keccak256(memptr, 0x40)
 
@@ -112,7 +112,7 @@ contract NestedMapping {
             // Store `innerHash` in memory location memptr+0x20
             mstore(add(memptr, 0x20), innerHash)
 
-            // Hash the content in memory location `memptr` to `memptr+0x40` 
+            // Hash the content in memory location `memptr` to `memptr+0x40`
             // assign hash to var `slotHash`
             let slotHash := keccak256(memptr, 0x40)
 

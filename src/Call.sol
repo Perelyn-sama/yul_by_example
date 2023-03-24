@@ -10,7 +10,7 @@ contract CalledContract {
         }
     }
 
-    function getNumber() public view returns(uint){
+    function getNumber() public view returns (uint256) {
         assembly {
             mstore(0x00, sload(0))
             return(0x00, 0x20)

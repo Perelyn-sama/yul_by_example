@@ -5,7 +5,6 @@ import "forge-std/Test.sol";
 import "../src/EtherWallet.sol";
 
 contract EtherWalletTest is Test {
-
     // Target Contract
     EtherWallet public etherWallet;
 
@@ -21,7 +20,7 @@ contract EtherWalletTest is Test {
         deal(CUSTOM_DEPLOYER, 100 ether);
 
         // set msg.sender to CUSTOM_DEPLOYER
-        // then deploy contract with 20 ether 
+        // then deploy contract with 20 ether
         vm.prank(CUSTOM_DEPLOYER);
         etherWallet = new EtherWallet{value: DEPLOY_AMOUNT}();
     }
