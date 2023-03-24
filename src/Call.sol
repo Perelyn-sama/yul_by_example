@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0
-pragma solidity 0.8.19;
+pragma solidity ^0.8.17;
 
 contract CalledContract {
     uint256 public number;
@@ -7,6 +7,13 @@ contract CalledContract {
     function setNumber(uint256 num) external {
         assembly {
             sstore(0, num)
+        }
+    }
+
+    function getNumber() public view returns(uint){
+        assembly {
+            mstore(0x00, sload(0))
+            return(0x00, 0x20)
         }
     }
 }
