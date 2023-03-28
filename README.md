@@ -4,9 +4,12 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 
 ### Contracts Implemented so far
 - [Array](/src/Array.sol)
+- [Call](/src/Call.sol)
 - [Conditionals](/src/Conditionals.sol)
 - [Counter](/src/Counter.sol)
+- [Enums](/src/Enums.sol)
 - [EtherWallet](/src/EtherWallet.sol)
+- [Events](/src/Events.sol)
 - [For Loop](src/ForLoop.sol)
 - [Hello World](/src/HelloWorld.sol)
 - [Mapping](/src/Mapping.sol)
