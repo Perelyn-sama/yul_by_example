@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity 0.8.17;
 
 contract Conditionals {
     function IfElse(uint256 x) public pure returns (uint256 res) {
