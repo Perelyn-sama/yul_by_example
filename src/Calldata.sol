@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity =0.8.15;
+pragma solidity 0.8.17;
 
 /// @notice The functions in this contract will be called by the
 ///         `CallerContract` via means of `call` or `staticcall`.
