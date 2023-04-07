@@ -5,7 +5,7 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 
 ### Contracts Implemented so far
 - [Array](/src/Array.sol)
-- [Bitwise](/script/Bitwise.sol)
+- [Bitwise](/src/Bitwise.sol)
 - [Call](/src/Call.sol)
 - [Calldata](/src/Calldata.sol)
 - [Conditionals](/src/Conditionals.sol)
@@ -27,6 +27,9 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Types](/src/Types.sol)
 - [Unchecked](/src/Unchecked.sol)
 - [ERC20](/src/YulERC20.sol)
+
+### Docs
+- [Calldata](/docs/Calldata.md)
 
 ### Acknowledgements
 
