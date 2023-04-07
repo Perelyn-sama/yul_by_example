@@ -4,6 +4,7 @@ pragma solidity 0.8.17;
 /// @notice The functions in this contract will be called by the
 ///         `CallerContract` via means of `call` or `staticcall`.
 /// @notice Refer to Calldata.md to see how encodings work.
+/// @notice Operations in Assembly overflow!!
 contract CalledContract {
     struct Data {
         uint128 x;
