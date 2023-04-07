@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
 /// @notice Overflow checks will be added later in a different contract `UncheckedRemedy`.

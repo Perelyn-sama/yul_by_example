@@ -1,9 +1,9 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
 /// @notice Operations in Assembly overflow!!
 contract Functions {
-    function withoutAssemblyReturn(uint256 a, uint256 b) public view returns (uint256) {
+    function withoutAssemblyReturn(uint256 a, uint256 b) public pure returns (uint256) {
         // Assembly function without a return value.
         assembly {
             function sum(num1, num2) {
@@ -14,7 +14,7 @@ contract Functions {
         }
     }
 
-    function withAssemblyReturn(uint256 a, uint256 b) public view returns (uint256) {
+    function withAssemblyReturn(uint256 a, uint256 b) public pure returns (uint256) {
         // Assembly function with a return value.
         assembly {
             function sum(num1, num2) -> total {
