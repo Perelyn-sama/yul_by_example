@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-/// @notice Overflow checks will be added later in a different contract `UncheckedRemedy`.
+/// @notice Overflow checks will be added later in a different contract `SafeOperations`.
 contract Unchecked {
     function uncheckedAdd(uint256 a, uint256 b) public pure returns (uint256) {
         assembly {
