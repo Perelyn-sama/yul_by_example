@@ -21,6 +21,7 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Hello World](/src/HelloWorld.sol)
 - [Mapping](/src/Mapping.sol)
 - [Send Ether](/src/SendEther.sol)
+- [SignatureVerification](/src/SignatureVerification.sol)
 - [Simple Storage](/src/SimpleStorage.sol)
 - [Structs](/src/Structs.sol)
 - [Types](/src/Types.sol)
