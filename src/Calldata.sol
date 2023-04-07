@@ -5,6 +5,14 @@ pragma solidity 0.8.17;
 ///         `CallerContract` via means of `call` or `staticcall`.
 /// @notice Refer to Calldata.md to see how encodings work.
 contract CalledContract {
+    struct Data {
+        uint128 x;
+        uint128 y;
+    }
+
+    string public myString;
+    uint256 public bigSum;
+
     // Basic: Take a number and return the sum of that and a fixed value.
     function add(uint256 i) public pure returns (uint256) {
         return i + 78;
@@ -20,11 +28,22 @@ contract CalledContract {
 
         for (uint256 i; i != len; ) {
             sum = sum + arr[i];
-            unchecked { ++i; }
+        unchecked { ++i; }
         }
 
         return sum;
     }
+
+    function setString(string calldata str) public {
+        if (bytes(str).length > 31) revert();
+        myString = str;
+    }
+
+    function structCall(Data memory data) public {
+        bigSum = uint256(data.x + data.y);
+    }
+
+    fallback() external {}
 }
 
 
@@ -103,5 +122,46 @@ contract CallerContract {
             returndatacopy(0x00, 0x00, returndatasize())
             return(0x00, returndatasize())
         }
+    }
+
+    /// @notice setString: 7fcaf666
+    function callSetString(string calldata str) public {
+        uint8 len = uint8(bytes(str).length);
+        if (len > 31) revert();
+
+        address calledContract = _calledContract;
+        bytes memory strCopy = bytes(str);
+
+        assembly {
+            mstore(0x0200, mload(add(strCopy, 0x20)))
+
+            mstore(0x80, 0x7fcaf666)
+            mstore(0xa0, 0x20)
+            mstore(0xc0, len)
+            mstore(0xe0, mload(0x0200))
+
+            let success := call(gas(), calledContract, 0, 0x9c, 0x64, 0x00, 0x00)
+        }
+    }
+
+    function getNewString() public view returns (string memory) {
+        return CalledContract(_calledContract).myString();
+    }
+
+    function callStructCall(uint128 num1, uint128 num2) public {
+        address calledContract = _calledContract;
+        bytes4 _selector = CalledContract.structCall.selector;
+
+        assembly {
+            mstore(0x9c, _selector)
+            mstore(0xa0, num1)
+            mstore(0xc0, num2)
+
+            let success := call(gas(), calledContract, 0, 0x9c, 0x44, 0x00, 0x00)
+        }
+    }
+
+    function getBigSum() public view returns (uint256) {
+        return CalledContract(_calledContract).bigSum();
     }
 }
