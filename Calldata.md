@@ -97,7 +97,6 @@ These first two lines will handle that for us. Having strings with len > 31
 `abi.encodePacked()`,
 `bytes memory`,
 `string memory`,
-`"random string"` (In ABI.encode),
 `bytes constant` (Storage variable, this will advance the pointer by 128 bytes because the value will be substituted and read again).
 
 It is advised to `ALWAYS` use `mload(0x40)` to write to the next slot then update to avoid accidental overwrites.
