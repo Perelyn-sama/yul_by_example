@@ -1,7 +1,8 @@
 ## Yul By Example 
 
-Basically we're trying to make [Solidity by example](https://solidity-by-example.org/) but for Yul.
-
+Basically we're trying to make [Solidity by example](https://solidity-by-example.org/) but for Yul.<br><br>
+**Required Solidity Version**: v0.8.17.<br>
+**Required SPDX-License-Identifier**: MIT
 
 ### Contracts Implemented so far
 - [Array](/src/Array.sol)
@@ -29,10 +30,11 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [ERC20](/src/YulERC20.sol)
 
 ### Docs
+- [Array](/docs/Array.md)
 - [Calldata](/docs/Calldata.md)
 
 ### Acknowledgements
 
 These contracts were inspired by or directly modified from many sources, primarily:
-- [Solidity By Example](https://solidity-by-example.org/)
 - [RareSkills](https://github.com/RareSkills/Udemy-Yul-Code)
+- [Solidity By Example](https://solidity-by-example.org/)
