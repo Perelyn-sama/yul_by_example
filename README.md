@@ -31,6 +31,8 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 
 ### Docs
 - [Array](/docs/Array.md)
+- [Bitwise](/docs/Bitwise.md)
+- [Call](/docs/Call.md)
 - [Calldata](/docs/Calldata.md)
 
 ### Acknowledgements
