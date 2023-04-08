@@ -3,7 +3,7 @@ Before opening a pull request, it is advisable to first open up an issue pertain
 ------------------------------------------- DELETE THE ABOVE -----------------------------------------
 
 ## Pull Request Title (Same as latest commit message).
-#### This pull request closes issues [#issue number(s)]
+#### This pull request fixes issues [#issue number(s)]
 
 ### Body
 Pull request detailed description, including code blocks if any. PRs must not break tests or fail at compilation.
