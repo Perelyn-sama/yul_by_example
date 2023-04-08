@@ -83,7 +83,7 @@ contract Array {
 
             // Load the value of location on storage.
             // 0x0000000000000000000000000000000000000000000000000000000000030201
-            let bytes := sload(location)
+            let bytesValue := sload(location)
 
             let shifted
 
@@ -91,25 +91,25 @@ contract Array {
             case 0 {
                 // Use bit masking to clear all indexes in bytes except the last byte.
                 // 0x0000000000000000000000000000000000000000000000000000000000000001
-                value := and(bytes, 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0f0ff)
-            }
-            case 1 {
+                value := and(bytesValue, 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0f0ff)
+            } case 1 {
                 // Shift bytes to the right by 8 bits, or 1 byte,
                 // this will push the second index to the end.
                 // 0x0000000000000000000000000000000000000000000000000000000000000302
-                shifted := shr(8, bytes)
+                shifted := shr(8, bytesValue)
 
                 // Use bit masking to clear all indexes in bytes except the last byte.
                 // 0x0000000000000000000000000000000000000000000000000000000000000002
                 value := and(shifted, 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0ff)
-            }
-            case 2 {
+            } case 2 {
                 // Shift bytes by 16 bits, or 2 bytes, this will push the third index to the end.
                 // 0x0000000000000000000000000000000000000000000000000000000000000003
-                shifted := shr(16, bytes)
+                shifted := shr(16, bytesValue)
 
                 // No point in bit masking, the bytes are already clear.
                 value := shifted
+            } default {
+                value := 0x00
             }
         }
     }

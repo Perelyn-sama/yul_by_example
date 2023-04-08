@@ -2,16 +2,16 @@
 pragma solidity 0.8.17;
 
 contract Bitwise {
-    function shiftLeft(uint256 num, uint256 bytesToShift) public pure returns (uint256) {
+    function shiftLeft(uint256 num, uint256 bitsToShift) public pure returns (uint256) {
         assembly {
-            mstore(0x00, shl(bytesToShift, num))
+            mstore(0x00, shl(bitsToShift, num))
             return(0x00, 0x20)
         }
     }
 
-    function shiftRight(uint256 num, uint256 bytesToShift) public pure returns (uint256) {
+    function shiftRight(uint256 num, uint256 bitsToShift) public pure returns (uint256) {
         assembly {
-            mstore(0x00, shr(bytesToShift, num))
+            mstore(0x00, shr(bitsToShift, num))
             return(0x00, 0x20)
         }
     }
@@ -30,9 +30,9 @@ contract Bitwise {
         }
     }
 
-    function xor(uint256 num, uint256 orNum) public pure returns (uint256) {
+    function xor(uint256 num, uint256 xorNum) public pure returns (uint256) {
         assembly {
-            mstore(0x00, xor(num, orNum))
+            mstore(0x00, xor(num, xorNum))
             return(0x00, 0x20)
         }
     }

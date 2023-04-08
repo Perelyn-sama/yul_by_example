@@ -23,11 +23,4 @@ contract Unchecked {
             return(0x00, 0x20)
         }
     }
-
-    function uncheckedDiv(uint256 a, uint256 b) public pure returns (uint256) {
-        assembly {
-            mstore(0x00, add(a, b))
-            return(0x00, 0x20)
-        }
-    }
 }
