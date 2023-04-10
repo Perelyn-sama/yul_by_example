@@ -47,9 +47,9 @@ contract Array {
         }
     }
 
-    function readDynamicArrayLength() public pure returns (uint256 length) {
+    function readDynamicArrayLength() public view returns (uint256 length) {
         assembly {
-            length := dynamicArray.slot
+            length := sload(dynamicArray.slot)
         }
     }
 
@@ -111,6 +111,30 @@ contract Array {
             } default {
                 value := 0x00
             }
+        }
+    }
+
+    function pushToArray(uint256 num) public {
+        assembly {
+            mstore(0x00, 0x03)
+            let location := keccak256(0x00, 0x20)
+            let count := sload(0x03)
+
+            sstore(0x03, add(count, 1))
+            sstore(add(location, count), num)
+        }
+    }
+
+    function popArray() public {
+        assembly {
+            mstore(0x00, 0x03)
+            let location := keccak256(0x00, 0x20)
+            let count := sload(0x03)
+
+            if eq(count, 0) { revert(0x00, 0x00) }
+
+            sstore(0x03, sub(count, 1))
+            sstore(add(location, sub(count, 1)), 0x00)
         }
     }
 }
