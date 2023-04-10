@@ -3,10 +3,10 @@ pragma solidity 0.8.17;
 
 contract Enums {
     enum myEnum {
-        NOTSTARTED, // Index 0,
-        STARTED, // Index 1,
-        STOPPED, // Index 2,
-        DELETED // Index 3
+        NOTSTARTED,
+        STARTED,
+        STOPPED,
+        DELETED
     }
 
     // Enums are uint8, They will be packed.

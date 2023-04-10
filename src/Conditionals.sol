@@ -4,7 +4,6 @@ pragma solidity 0.8.17;
 contract Conditionals {
     function IfElse(uint256 x) public pure returns (uint256 res) {
         assembly {
-            // There are no parentheses in the if statements, and there are no elses, rather, use switch.
             if lt(x, 10) { res := 0 }
             if gt(x, 10) { res := 1 }
         }
@@ -15,9 +14,9 @@ contract Conditionals {
         assembly {
             switch lt(x, 79)
             // If true.
-            case 1 { isTrue := 0x00000000000000000000000000000000000000000000000000000000000000000001 }
+            case 1 { isTrue := 0x01 }
             // Otherwise.
-            default { isTrue := 0x00000000000000000000000000000000000000000000000000000000000000000000 }
+            default { isTrue := 0x00 }
         }
     }
 }
