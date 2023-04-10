@@ -86,11 +86,11 @@ Total: 196 bytes | 196 | 0xc4
 This calls the `setString(string)` function with selector `0x7fcaf666` with 4 array values. However, this might get tricky. Since the memory can only contain one 32 bytes value at a time, we might make some impositions that will restrict the set string to 32 characters. However, since we want to set a storage string in the `CalledContract`, the max a storage string can take is 31 bytes, so we will restrict our function to only take in 31 bytes.
 These first two lines will handle that for us. Having strings with len > 31
 ```solidity
-    function callSetString(string calldata str) public {
-        uint8 len = uint8(bytes(str).length);
-        if (len > 31) revert();
-        _;
-    }
+function callSetString(string calldata str) public {
+    uint8 len = uint8(bytes(str).length);
+    if (len > 31) revert();
+    _;
+}
 ```
 `NOTE`: Whenever a memory reference is passed inside a function, it advances the free memory pointer by 64 bytes. Memory references includes:
 `abi.encode()`,
@@ -103,11 +103,11 @@ It is advised to `ALWAYS` use `mload(0x40)` to write to the next slot then updat
 
 ###### Encoding
 ```solidity
-    function callSetString(string calldata str) public {
-        _;
-        bytes memory strCopy = bytes(str);
-        _;
-    }
+function callSetString(string calldata str) public {
+    _;
+    bytes memory strCopy = bytes(str);
+    _;
+}
 ```
 This moves the memory by 64 bytes, which we will store at a random location we know won't be overwritten until the function call is over `0x0200`.
 ```assembly

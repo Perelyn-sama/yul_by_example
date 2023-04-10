@@ -34,6 +34,9 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Bitwise](/docs/Bitwise.md)
 - [Call](/docs/Call.md)
 - [Calldata](/docs/Calldata.md)
+- [Conditionals](/docs/Conditionals.md)
+- [Counter](/docs/Counter.md)
+- [Enums](/docs/Enums.md)
 
 ### Acknowledgements
 

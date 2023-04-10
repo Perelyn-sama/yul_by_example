@@ -3,7 +3,7 @@ pragma solidity 0.8.17;
 
 contract Errors {
     // keccak256(NumberLessThan6(uint256))
-    bytes32 constant errorSelector = 0x8205edea00000000000000000000000000000000000000000000000000000000;
+    bytes4 constant errorSelector = 0x8205edea;
     uint8 private constant errorNumber = 4;
     uint8 private constant mainNumber = 6;
     uint8 private constant storedNumberForError = 15;
@@ -11,7 +11,7 @@ contract Errors {
     function revertWithOutErrorMessage() public pure {
         assembly {
             if lt(errorNumber, mainNumber) {
-                revert(0x00, 0x00) // Reads nothing.
+                revert(0x00, 0x00)
             }
         }
     }
