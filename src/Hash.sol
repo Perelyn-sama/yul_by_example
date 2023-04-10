@@ -12,8 +12,7 @@ contract Hash {
         }
     }
 
-    /// @notice Due to Yul structure, ABI.encode can be hashed, but encodePacked can't.
-    ///         Unless, manually padded to 32 bytes before hash. See padStringTo32ByteBytes.
+    /// @notice Due to Yul structure, ABI.encode is preferred, but encodePacked isn't.
     function hashABIEncode(string memory s) public pure returns (bytes32) {
         assembly {
             mstore(0x00, 0x20)

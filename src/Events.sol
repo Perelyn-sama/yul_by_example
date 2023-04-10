@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.15;
+pragma solidity 0.8.17;
 
 contract Events {
     event IndexedEvent(address indexed a, uint256 indexed b);
