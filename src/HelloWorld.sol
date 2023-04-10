@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
-// compiler version must be greater than or equal to 0.8.17 and less than 0.9.0
 pragma solidity 0.8.17;
-
 // https://solidity-by-example.org/hello-world
+
 contract HelloWorld {
-    function Greet() external pure returns (string memory) {
+    function greet() external pure returns (string memory) {
         assembly {
             // Assign the string to var `greet`
             // "Hello World!" => 0x48656c6c6f20576f726c64210000000000000000000000000000000000000000.
