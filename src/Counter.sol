@@ -26,6 +26,7 @@ contract Counter {
         assembly {
             // Assign count variable slot to countSlot.
             let countSlot := count.slot
+            let countNum := sload(countSlot)
 
             // We update the value at the `count` slot by incrementing the
             // current value at the slot by 1, then calling an sstore() to overwrite the
@@ -33,8 +34,8 @@ contract Counter {
             // However, this doesn't check for overflows and underflows, so we must make sure that
             // we do not go beyond the limit for our type maximum before making the update.
             // We are working with uint256, so the max is 0x("ff" * 32).
-            if eq(sload(countSlot), 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { revert(0, 0) }
-            sstore(countSlot, add(sload(countSlot), 1))
+            if eq(countNum, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { revert(0, 0) }
+            sstore(countSlot, add(countNum, 1))
         }
     }
 
@@ -43,14 +44,15 @@ contract Counter {
         assembly {
             // Assign count variable slot to countSlot.
             let countSlot := count.slot
+            let countNum := sload(countSlot)
 
             // We update the value at the `count` slot by decrementing the
             // current value at the slot by 1, then calling an sstore() to overwrite the
             // value at slot 0.
             // However, this doesn't check for overflows and underflows, so we must make sure that
             // we do not go below 0 before making the update.
-            if iszero(sload(countSlot)) { revert(0, 0) }
-            sstore(countSlot, sub(sload(countSlot), 1))
+            if iszero(countNum) { revert(0, 0) }
+            sstore(countSlot, sub(countNum, 1))
         }
     }
 }

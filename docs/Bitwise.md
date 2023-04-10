@@ -12,7 +12,7 @@ ________________|___________
     NOT         |   ~    
     OR          |   |
     RIGHT SHIFT |   >>
-    XOR         | ^           
+    XOR         |   ^           
 ```
 
 ## More Info
