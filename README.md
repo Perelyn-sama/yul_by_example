@@ -20,6 +20,7 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Functions](src/Functions.sol)
 - [Hash](src/Hash.sol)
 - [Hello World](/src/HelloWorld.sol)
+- [IsContract](/src/IsContract.sol)
 - [Mapping](/src/Mapping.sol)
 - [Send Ether](/src/SendEther.sol)
 - [SignatureVerification](/src/SignatureVerification.sol)
@@ -37,6 +38,22 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Conditionals](/docs/Conditionals.md)
 - [Counter](/docs/Counter.md)
 - [Enums](/docs/Enums.md)
+- [Errors](/docs/Errors.md)
+- [EtherWallet](/docs/EtherWallet.md)
+- [Events](/docs/Events.md)
+- [Fallback](/docs/Fallback.md)
+- [ForLoop](/docs/ForLoop.md)
+- [Functions](/docs/Functions.md)
+- [Hash](/docs/Hash.md)
+- [HelloWorld](/docs/HelloWorld.md)
+- [IsContract](/docs/IsContract.md)
+
+## Contributors ✨
+
+<a href="https://github.com/Perelyn-sama/yul_by_example/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Perelyn-sama/yul_by_example" />
+</a>
+
 
 ### Acknowledgements
 
