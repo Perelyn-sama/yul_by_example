@@ -13,7 +13,7 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Counter](/src/Counter.sol)
 - [Enums](/src/Enums.sol)
 - [Errors](/src/Errors.sol)
-- [EtherWallet](/src/EtherWallet.sol)
+- [Ether Wallet](/src/EtherWallet.sol)
 - [Events](/src/Events.sol)
 - [FallBack](/src/Fallback.sol)
 - [For Loop](src/ForLoop.sol)
@@ -23,7 +23,7 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [IsContract](/src/IsContract.sol)
 - [Mapping](/src/Mapping.sol)
 - [Send Ether](/src/SendEther.sol)
-- [SignatureVerification](/src/SignatureVerification.sol)
+- [Signature Verification](/src/SignatureVerification.sol)
 - [Simple Storage](/src/SimpleStorage.sol)
 - [Structs](/src/Structs.sol)
 - [Types](/src/Types.sol)
@@ -39,21 +39,29 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [Counter](/docs/Counter.md)
 - [Enums](/docs/Enums.md)
 - [Errors](/docs/Errors.md)
-- [EtherWallet](/docs/EtherWallet.md)
+- [Ether Wallet](/docs/EtherWallet.md)
 - [Events](/docs/Events.md)
 - [Fallback](/docs/Fallback.md)
-- [ForLoop](/docs/ForLoop.md)
+- [For Loop](/docs/ForLoop.md)
 - [Functions](/docs/Functions.md)
 - [Hash](/docs/Hash.md)
-- [HelloWorld](/docs/HelloWorld.md)
-- [IsContract](/docs/IsContract.md)
+- [Hello World](/docs/HelloWorld.md)
+- [Is Contract](/docs/IsContract.md)
+- [Mapping](/docs/Mapping.md)
+- [Safe Operations](/docs/SafeOperations.md)
+- [Send Ether](/docs/SendEther.md)
+- [Signature Verification](/docs/SignarureVerification.md)
+- [Simple Storage](/docs/SimpleStorage.md)
+- [Structs](/docs/Structs.md)
+- [Types](/docs/Types.md)
+- [Unchecked](/docs/Unchecked.md)
+- [Yul ERC20](/docs/YulERC20.md)
 
 ## Contributors ✨
 
 <a href="https://github.com/Perelyn-sama/yul_by_example/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Perelyn-sama/yul_by_example" />
 </a>
-
 
 ### Acknowledgements
 

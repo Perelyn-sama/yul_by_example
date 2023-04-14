@@ -7,9 +7,9 @@ contract SendEther {
     
     function transferEther(uint256 amount, address to) external {
         assembly {
-            let s := call(gas(), to, amount, 0, 0, 0, 0)
+            let s := call(gas(), to, amount, 0x00, 0x00, 0x00, 0x00)
             if iszero(s) {
-                revert(0, 0)
+                revert(0x00, 0x00)
             }
         }
     }
