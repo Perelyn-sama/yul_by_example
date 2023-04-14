@@ -2,7 +2,6 @@
 pragma solidity 0.8.17;
 
 /**
- *
  * @author RareSkills (https://github.com/RareSkills/Udemy-Yul-Code))
  * https://solidity-by-example.org/primitives
  */
