@@ -10,7 +10,8 @@ contract Proxy is Storage {
     fallback() external {
         assembly {
             let size := calldatasize()
-            calldatacopy(0x2400, 0x00, size)
+            let loc := mload(0x40)
+            calldatacopy(loc, 0x00, size)
             let sent := delegatecall(gas(), sload(deployment.slot), 0x2400, size, 0x00, 0x00)
             if iszero(sent) {
                 revert(0x00, 0x00)
