@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import {IERC721} from "./IERC721.sol";
 
 // Max Supply: (2 ** 256) - 1.
 bytes32 constant MAX = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
