@@ -45,61 +45,59 @@ abstract contract YulERC721 is IERC721 {
         }
     }
 
-    fallback() external payable {}
-
-    function name() public pure returns (string memory) {
+    fallback() external {
         assembly {
-            mstore(0x00, 0x20)
-            mstore(0x29, 0x0959756c455243373231)
-            return(0x00, 0x60)
-        }
-    }
+            let selector := shr(
+                mul(0x1c, 8),
+                calldataload(0)
+            )
 
-    function symbol() public pure returns (string memory) {
-        assembly {
-            mstore(0x00, 0x20)
-            mstore(0x25, 0x052459455243)
-            return(0x00, 0x60)
-        }
-    }
+            function balanceOf(addr) -> bal {
+                mstore(0x00, addr)
+                mstore(0x20, 0x02)
 
-    function balanceOf(address) public view returns (uint256) {
-        assembly {
-            mstore(0x00, calldataload(0x04))
-            mstore(0x20, 0x02)
+                let location := keccak256(0x00, 0x40)
 
-            let location := keccak256(0x00, 0x40)
-
-            mstore(0x00, sload(location))
-            return(0x00, 0x20)
-        }
-    }
-
-    function ownerOf(uint256) external view returns (address) {
-        assembly {
-            mstore(0x00, calldataload(0x04))
-            mstore(0x20, 0x01)
-
-            let location := keccak256(0x00, 0x40)
-
-            mstore(0x00, sload(location))
-            return(0x00, 0x20)
-        }
-    }
-
-    function approve(address, uint256) external {
-        assembly {
-            mstore(0x00, calldataload(0x24))
-            mstore(0x20, 0x01)
-
-            let location := keccak256(0x00, 0x40)
-
-            if iszero(eq(sload(location), caller())) {
-                mstore(0x00, NOT_OWNER_SELECTOR)
-                return(0x00, 0x04)
+                mstore(0x00, sload(location))
+                bal := mload(0x00)
             }
 
-            // Continue.
+            function ownerOf(id) -> addr {
+                mstore(0x00, id)
+                mstore(0x20, 0x01)
+
+                let location := keccak256(0x00, 0x40)
+
+                mstore(0x00, sload(location))
+                addr := mload(0x00)
+            }
+
+            switch selector
+            // keccak256(name())
+            case 0x06fdde03 {
+                mstore(0x00, 0x20)
+                mstore(0x29, 0x0959756c455243373231)
+                return(0x00, 0x60)
+            }
+
+            // keccak256(symbol())
+            case 0x95d89b41 {
+                mstore(0x00, 0x20)
+                mstore(0x25, 0x052459455243)
+                return(0x00, 0x60)
+            }
+
+            // keccak256(balanceOf(address))
+            case 0x70a08231 {
+                mstore(0x00, balanceOf(calldataload(0x04)))
+                return(0x00, 0x20)
+            }
+
+            // keccak256(ownerOf(uint256))
+            case 0x6352211e {
+                mstore(0x00, ownerOf(calldataload(0x04)))
+                return(0x00, 0x20)
+            }
         }
     }
 }
