@@ -10,5 +10,8 @@ out/
 # Dotenv file
 .env
 
+# OZ Library
+lib/openzeppelin-contracts/
+
 # Editor 
 .idea

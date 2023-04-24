@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import {IERC721} from "forge-std/interfaces/IERC721.sol";
+import {IERC721} from "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 // Max Supply: (2 ** 256) - 1.
 bytes32 constant MAX = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
@@ -14,6 +14,8 @@ bytes32 constant APPROVAL_FOR_ALL_EVENT = 0x17307eab39ab6107e8899845ad3d59bd9653
 
 // keccak256(InexistentNFT())
 bytes4 constant INEXISTENT_NFT_ERROR_SELECTOR = 0xb80613e5;
+// keccak256(NotOwner())
+bytes4 constant NOT_OWNER_SELECTOR = 0x30cd7471;
 // keccak256(ZeroAddress())
 bytes4 constant ZERO_ADDRESS_ERROR_SELECTOR = 0xd92e233d;
 // keccak256(MaxSupplyReached())
@@ -85,19 +87,17 @@ abstract contract YulERC721 is IERC721 {
         }
     }
 
-    function safeTransferFrom(
-        address _from,
-        address _to,
-        uint256 _tokenId,
-        bytes calldata data
-    ) external payable
-    {
+    function approve(address, uint256) external {
         assembly {
-            mstore(0x0100, calldataload(0x44))
-            mstore(0x0120, 0x01)
+            mstore(0x00, calldataload(0x24))
+            mstore(0x20, 0x01)
 
-            let location := keccak256(0x0100, 0x40)
-            let _owner := sload(location)
+            let location := keccak256(0x00, 0x40)
+
+            if iszero(eq(sload(location), caller())) {
+                mstore(0x00, NOT_OWNER_SELECTOR)
+                return(0x00, 0x04)
+            }
 
             // Continue.
         }
