@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import {IERC721} from "./IERC721.sol";
+import {IERC721} from "../interfaces/IERC721.sol";
 
 // Max Supply: (2 ** 256) - 1.
 bytes32 constant MAX = 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff;
@@ -47,11 +47,6 @@ abstract contract YulERC721 is IERC721 {
 
     fallback() external {
         assembly {
-            let selector := shr(
-                mul(0x1c, 8),
-                calldataload(0)
-            )
-
             function balanceOf(addr) -> bal {
                 mstore(0x00, addr)
                 mstore(0x20, 0x02)
@@ -67,10 +62,21 @@ abstract contract YulERC721 is IERC721 {
                 mstore(0x20, 0x01)
 
                 let location := keccak256(0x00, 0x40)
+                let locValue := sload(location)
 
-                mstore(0x00, sload(location))
+                if iszero(locValue) {
+                    mstore(0x00, INEXISTENT_NFT_ERROR_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                mstore(0x00, locValue)
                 addr := mload(0x00)
             }
+
+            let selector := shr(
+                mul(0x1c, 8),
+                calldataload(0)
+            )
 
             switch selector
             // keccak256(name())
