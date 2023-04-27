@@ -47,6 +47,44 @@ abstract contract YulERC721 is IERC721 {
 
     fallback() external {
         assembly {
+            function getOwnersMapLoc(id) -> loc {
+                mstore(0x00, id)
+                mstore(0x20, 0x01)
+
+                loc := keccak256(0x00, 0x40)
+            }
+
+            function getBalancesMapLoc(owner) -> loc {
+                mstore(0x00, owner)
+                mstore(0x20, 0x02)
+
+                loc := keccak256(0x00, 0x40)
+            }
+
+            function getApprovalsMapLoc(owner, id) -> loc {
+                mstore(0x00, owner)
+                mstore(0x20, 0x03)
+
+                let firstLoc := keccak256(0x00, 0x40)
+
+                mstore(0x00, id)
+                mstore(0x20, firstLoc)
+
+                loc := keccak256(0x00, 0x40)
+            }
+
+            function getApprovalsForAllMapLoc(owner, spender) -> loc {
+                mstore(0x00, owner)
+                mstore(0x20, 0x04)
+
+                let firstLoc := keccak256(0x00, 0x40)
+
+                mstore(0x00, spender)
+                mstore(0x20, firstLoc)
+
+                loc := keccak256(0x00, 0x40)
+            }
+
             function balanceOf(addr) -> bal {
                 mstore(0x00, addr)
                 mstore(0x20, 0x02)
@@ -71,6 +109,32 @@ abstract contract YulERC721 is IERC721 {
 
                 mstore(0x00, locValue)
                 addr := mload(0x00)
+            }
+
+            function approve(spender, id) {
+                if iszero(eq(ownerOf(id), caller())) {
+                    mstore(0x00, NOT_OWNER_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                let appLocation := getApprovalsMapLoc(caller(), id)
+                sstore(appLocation, spender)
+            }
+
+            function setApprovalForAll(spender, boolVal) {
+                let val
+
+                switch boolVal
+                case 0x00 {
+                    val := 0x00
+                } case 0x01 {
+                    val := 0x01
+                }
+
+                sstore(
+                    getApprovalsForAllMapLoc(caller(), spender),
+                    val
+                )
             }
 
             let selector := shr(
@@ -102,6 +166,42 @@ abstract contract YulERC721 is IERC721 {
             // keccak256(ownerOf(uint256))
             case 0x6352211e {
                 mstore(0x00, ownerOf(calldataload(0x04)))
+                return(0x00, 0x20)
+            }
+
+            // keccak256(approve(address,uint256))
+            case 0x095ea7b3 {
+                approve(
+                    calldataload(0x04),
+                    calldataload(0x24)
+                )
+            }
+
+            // keccak256(setApprovalForAll(address,bool))
+            case 0xa22cb465 {
+                setApprovalForAll(
+                    calldataload(0x04),
+                    calldataload(0x24)
+                )
+            }
+
+            // keccak256(getApproved(uint256))
+            case 0x081812fc {
+                mstore(0x00, sload(getApprovalsMapLoc(caller(), calldataload(0x04))))
+                return(0x00, 0x20)
+            }
+
+            // keccak256(isApprovedForAll(address,address))
+            case 0xe985e9c5 {
+                mstore(
+                    0x00,
+                    sload(
+                        getApprovalsForAllMapLoc(
+                            calldataload(0x04),
+                            calldataload(0x24)
+                        )
+                    )
+                )
                 return(0x00, 0x20)
             }
         }
