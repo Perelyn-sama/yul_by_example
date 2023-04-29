@@ -12,6 +12,9 @@ bytes32 constant APPROVAL_EVENT = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2
 // keccak256(ApprovalForAll(address,address,bool))
 bytes32 constant APPROVAL_FOR_ALL_EVENT = 0x17307eab39ab6107e8899845ad3d59bd9653f200f220920489ca2b5937696c31;
 
+// keccak256("INDEX_SLOT")
+bytes32 constant INDEX_SLOT = 0x0940455f9f41124c59357ed8e7c2d5d29d43ff7353146922922955772810398a;
+
 // keccak256(InexistentNFT())
 bytes4 constant INEXISTENT_NFT_ERROR_SELECTOR = 0xb80613e5;
 // keccak256(NotOwner())
@@ -137,6 +140,50 @@ abstract contract YulERC721 is IERC721 {
                 )
             }
 
+            function transfer(from, to, id) {
+                let idOwner := ownerOf(id)
+
+                if iszero(
+                    eq(idOwner, from)
+                ) {
+                    mstore(0x00, NOT_OWNER_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                if iszero(to) {
+                    mstore(0x00, ZERO_ADDRESS_ERROR_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                let fromBal := sload(getBalancesMapLoc(idOwner))
+                let toBal := sload(getBalancesMapLoc(to))
+
+                sstore(getOwnersMapLoc(id), to)
+                sstore(getBalancesMapLoc(idOwner), sub(fromBal, 0x01))
+                sstore(getBalancesMapLoc(to), add(toBal, 0x01))
+            }
+
+            function transferFrom(from, to, id) {
+                let spender := caller()
+                let idOwner := ownerOf(id)
+                let index := sload(INDEX_SLOT)
+
+                if iszero(
+                    or(
+                        or(
+                            eq(idOwner, spender),
+                            eq(sload(getApprovalsMapLoc(idOwner, id)), spender)
+                        ),
+                        eq(sload(getApprovalsForAllMapLoc(idOwner, spender)), 0x01)
+                    )
+                ) {
+                    mstore(0x00, NOT_OWNER_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                transfer(from, to, id)
+            }
+
             let selector := shr(
                 mul(0x1c, 8),
                 calldataload(0)
@@ -175,6 +222,8 @@ abstract contract YulERC721 is IERC721 {
                     calldataload(0x04),
                     calldataload(0x24)
                 )
+
+                log4(0x00, 0x00, APPROVAL_EVENT, caller(), calldataload(0x04), calldataload(0x24))
             }
 
             // keccak256(setApprovalForAll(address,bool))
@@ -183,6 +232,9 @@ abstract contract YulERC721 is IERC721 {
                     calldataload(0x04),
                     calldataload(0x24)
                 )
+
+                mstore(0x00, calldataload(0x24))
+                log3(0x00, 0x20, APPROVAL_FOR_ALL_EVENT, caller(), calldataload(0x04))
             }
 
             // keccak256(getApproved(uint256))
@@ -203,6 +255,92 @@ abstract contract YulERC721 is IERC721 {
                     )
                 )
                 return(0x00, 0x20)
+            }
+
+            // keccak256(mint(address))
+            case 0x6a627842 {
+                let id := sload(INDEX_SLOT)
+                if eq(id, MAX) {
+                    mstore(0x00, MAX_SUPPLY_ERROR_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                let receiver := calldataload(0x04)
+                let bal := sload(getBalancesMapLoc(receiver))
+                if eq(bal, MAX) {
+                    mstore(0x00, MAX_SUPPLY_ERROR_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                sstore(getOwnersMapLoc(id), receiver)
+                sstore(getBalancesMapLoc(receiver), add(bal, 0x01))
+                sstore(INDEX_SLOT, add(id, 0x01))
+            }
+
+            // keccak256(burn(uint256))
+            case 0x42966c68 {
+                let spender := caller()
+                let id := calldataload(0x04)
+                let idOwner := ownerOf(id)
+                let index := sload(INDEX_SLOT)
+                let bal := sload(getBalancesMapLoc(idOwner))
+
+                if iszero(
+                    or(
+                        or(
+                            eq(idOwner, spender),
+                            eq(sload(getApprovalsMapLoc(idOwner, id)), spender)
+                        ),
+                        eq(sload(getApprovalsForAllMapLoc(idOwner, spender)), 0x01)
+                    )
+                ) {
+                    mstore(0x00, NOT_OWNER_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                sstore(getOwnersMapLoc(id), 0x00)
+                sstore(getBalancesMapLoc(idOwner), sub(bal, 0x01))
+                sstore(INDEX_SLOT, sub(index, 0x01))
+            }
+
+            // keccak256(transferFrom(address,address,uint256))
+            case 0x23b872dd {
+                let from := calldataload(0x04)
+                let to := calldataload(0x24)
+                let id := calldataload(0x44)
+
+                transferFrom(from, to, id)
+
+                log4(0x00, 0x00, TRANSFER_EVENT, from, to, id)
+            }
+
+            // keccak256(safeTransferFrom(address,address,uint256))
+            case 0x42842e0e {
+                let from := calldataload(0x04)
+                let to := calldataload(0x24)
+                let id := calldataload(0x44)
+
+                transferFrom(from, to, id)
+
+                log4(0x00, 0x00, TRANSFER_EVENT, from, to, id)
+            }
+
+            // keccak256(safeTransferFrom(address,address,uint256,bytes))
+            case 0xb88d4fde {
+                let from := calldataload(0x24)
+                let to := calldataload(0x44)
+                let id := calldataload(0x64)
+
+                let bytesLength := calldataload(0x84)
+                calldatacopy(0x80, 0xa4, bytesLength)
+
+                transferFrom(from, to, id)
+                let sent := call(gas(), to, 0, 0x80, bytesLength, 0x00, 0x20)
+                if iszero(sent) {
+                    revert(0x00, 0x00)
+                }
+
+                log4(0x00, 0x00, TRANSFER_EVENT, from, to, id)
             }
         }
     }
