@@ -31,7 +31,7 @@ bytes4 constant UNDERFLOW_ERROR_SELECTOR = 0xcaccb6d9;
 * @dev  YulERC721, ERC721, but entirely Yul.
 *       Name: YulERC721, 0x59756c455243373231, 0x08
 *       Symbol: $YERC, 0x2459455243, 0x05
-* @notice It's a challenge to avoid one line of solidity inside functions.
+* @notice It's a challenge to avoid one line of solidity inside functions, still in progress.
 */
 
 abstract contract YulERC721 is IERC721 {
