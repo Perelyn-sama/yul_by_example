@@ -142,8 +142,30 @@ abstract contract YulERC721 is IERC721 {
                 )
             }
 
+            function isOwnerOrApproved(from, id) -> boolVal {
+                if iszero(ownerOf(id)) {
+                    mstore(0x00, ZERO_ADDRESS_ERROR_SELECTOR)
+                    revert(0x00, 0x04)
+                }
+
+                if or(
+                    or(
+                        eq(ownerOf(id), from),
+                        eq(sload(getApprovalsMapLoc(ownerOf(id), id)), from)
+                    ),
+                    eq(sload(getApprovalsForAllMapLoc(ownerOf(id), from)), 0x01)
+                ) {
+                    boolVal := 0x01
+                }
+            }
+
             function transfer(from, to, id) {
                 let idOwner := ownerOf(id)
+
+                if iszero(isOwnerOrApproved(caller(), id)) {
+                    mstore(0x00, NOT_OWNER_SELECTOR)
+                    revert(0x00, 0x04)
+                }
 
                 if iszero(
                     eq(idOwner, from)
@@ -163,27 +185,6 @@ abstract contract YulERC721 is IERC721 {
                 sstore(getOwnersMapLoc(id), to)
                 sstore(getBalancesMapLoc(idOwner), sub(fromBal, 0x01))
                 sstore(getBalancesMapLoc(to), add(toBal, 0x01))
-            }
-
-            function transferFrom(from, to, id) {
-                let spender := caller()
-                let idOwner := ownerOf(id)
-                let index := sload(INDEX_SLOT)
-
-                if iszero(
-                    or(
-                        or(
-                            eq(idOwner, spender),
-                            eq(sload(getApprovalsMapLoc(idOwner, id)), spender)
-                        ),
-                        eq(sload(getApprovalsForAllMapLoc(idOwner, spender)), 0x01)
-                    )
-                ) {
-                    mstore(0x00, NOT_OWNER_SELECTOR)
-                    revert(0x00, 0x04)
-                }
-
-                transfer(from, to, id)
             }
 
             let selector := shr(
@@ -287,15 +288,7 @@ abstract contract YulERC721 is IERC721 {
                 let index := sload(INDEX_SLOT)
                 let bal := sload(getBalancesMapLoc(idOwner))
 
-                if iszero(
-                    or(
-                        or(
-                            eq(idOwner, spender),
-                            eq(sload(getApprovalsMapLoc(idOwner, id)), spender)
-                        ),
-                        eq(sload(getApprovalsForAllMapLoc(idOwner, spender)), 0x01)
-                    )
-                ) {
+                if iszero(isOwnerOrApproved(caller(), id)) {
                     mstore(0x00, NOT_OWNER_SELECTOR)
                     revert(0x00, 0x04)
                 }
@@ -311,7 +304,7 @@ abstract contract YulERC721 is IERC721 {
                 let to := calldataload(0x24)
                 let id := calldataload(0x44)
 
-                transferFrom(from, to, id)
+                transfer(from, to, id)
 
                 log4(0x00, 0x00, TRANSFER_EVENT, from, to, id)
             }
@@ -322,21 +315,22 @@ abstract contract YulERC721 is IERC721 {
                 let to := calldataload(0x24)
                 let id := calldataload(0x44)
 
-                transferFrom(from, to, id)
+                transfer(from, to, id)
 
                 log4(0x00, 0x00, TRANSFER_EVENT, from, to, id)
             }
 
             // keccak256(safeTransferFrom(address,address,uint256,bytes))
             case 0xb88d4fde {
-                let from := calldataload(0x24)
-                let to := calldataload(0x44)
-                let id := calldataload(0x64)
+                let from := calldataload(0x04)
+                let to := calldataload(0x24)
+                let id := calldataload(0x44)
 
                 let bytesLength := calldataload(0x84)
                 calldatacopy(0x80, 0xa4, bytesLength)
 
-                transferFrom(from, to, id)
+                transfer(from, to, id)
+
                 let sent := call(gas(), to, 0, 0x80, bytesLength, 0x00, 0x20)
                 if iszero(sent) {
                     revert(0x00, 0x00)
