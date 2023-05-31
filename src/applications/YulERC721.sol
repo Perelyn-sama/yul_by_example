@@ -96,7 +96,7 @@ abstract contract YulERC721 is IERC721 {
 
             /// @dev Returns the balance of `addr`.
             function balanceOf(addr) -> bal {
-                mstore(0x00, sload(getBalancesMapLoc(owner)))
+                mstore(0x00, sload(getBalancesMapLoc(addr)))
                 bal := mload(0x00)
             }
 
