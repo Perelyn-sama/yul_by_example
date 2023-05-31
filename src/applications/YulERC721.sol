@@ -50,6 +50,7 @@ abstract contract YulERC721 is IERC721 {
 
     fallback() external {
         assembly {
+            /// @dev Returns the location of the owners mapping key `id`.
             function getOwnersMapLoc(id) -> loc {
                 mstore(0x00, id)
                 mstore(0x20, 0x01)
@@ -57,6 +58,7 @@ abstract contract YulERC721 is IERC721 {
                 loc := keccak256(0x00, 0x40)
             }
 
+            /// @dev Returns the location of the balances mapping key `owner`.
             function getBalancesMapLoc(owner) -> loc {
                 mstore(0x00, owner)
                 mstore(0x20, 0x02)
@@ -64,6 +66,8 @@ abstract contract YulERC721 is IERC721 {
                 loc := keccak256(0x00, 0x40)
             }
 
+
+            /// @dev Returns the location of the approvals mapping keys `owner, id`.
             function getApprovalsMapLoc(owner, id) -> loc {
                 mstore(0x00, owner)
                 mstore(0x20, 0x03)
@@ -76,6 +80,8 @@ abstract contract YulERC721 is IERC721 {
                 loc := keccak256(0x00, 0x40)
             }
 
+
+            /// @dev Returns the location of the isApprovedForAll mapping keys `owner, spender`.
             function getApprovalsForAllMapLoc(owner, spender) -> loc {
                 mstore(0x00, owner)
                 mstore(0x20, 0x04)
@@ -88,32 +94,25 @@ abstract contract YulERC721 is IERC721 {
                 loc := keccak256(0x00, 0x40)
             }
 
+            /// @dev Returns the balance of `addr`.
             function balanceOf(addr) -> bal {
-                mstore(0x00, addr)
-                mstore(0x20, 0x02)
-
-                let location := keccak256(0x00, 0x40)
-
-                mstore(0x00, sload(location))
+                mstore(0x00, sload(getBalancesMapLoc(owner)))
                 bal := mload(0x00)
             }
 
+            /// @dev Returns the owner of `id`.
             function ownerOf(id) -> addr {
-                mstore(0x00, id)
-                mstore(0x20, 0x01)
-
-                let location := keccak256(0x00, 0x40)
-                let locValue := sload(location)
+                let locValue := sload(getOwnersMapLoc(id))
 
                 if iszero(locValue) {
                     mstore(0x00, INEXISTENT_NFT_ERROR_SELECTOR)
                     revert(0x00, 0x04)
                 }
 
-                mstore(0x00, locValue)
-                addr := mload(0x00)
+                addr := locValue
             }
 
+            /// @dev ERC-721 `approve()` function.
             function approve(spender, id) {
                 if iszero(eq(ownerOf(id), caller())) {
                     mstore(0x00, NOT_OWNER_SELECTOR)
@@ -124,7 +123,10 @@ abstract contract YulERC721 is IERC721 {
                 sstore(appLocation, spender)
             }
 
+            /// @dev    ERC-721 `setApprovalForAll()` function.
+            ///         `boolVal` must be set to 1 (true) or 0 - ∞ (false).
             function setApprovalForAll(spender, boolVal) {
+                /// @dev Initialize a dependent, bool value.
                 let val
 
                 switch boolVal
