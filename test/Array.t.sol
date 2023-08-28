@@ -13,8 +13,12 @@ contract ArrayTest is Test {
 
     function testReadFixedArray() public {
         // fixedArray - [10, 20, 30]
-        uint256 ret = array.readFixedArray(0);
-        assertEq(ret, 10);
+        uint256 ret0 = array.readFixedArray(0);
+        uint256 ret1 = array.readFixedArray(1);
+        uint256 ret2 = array.readFixedArray(2);
+        assertEq(ret0, 10);
+        assertEq(ret1, 20);
+        assertEq(ret2, 30);
     }
 
     function testreadDynamicArray() public {

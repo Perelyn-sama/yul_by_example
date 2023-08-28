@@ -3,7 +3,7 @@ pragma solidity 0.8.17;
 
 contract Array {
     // Declare array variables.
-    uint256[3] fixedArray; // Elements stored @ slots 0, 1, 2.
+    uint8[3] fixedArray; // Elements stored @ slots 0, 1, 2.
     uint256[] dynamicArray; // Length stored @ slot 3, elements in slots keccak256(3) to (keccak256(3) + (length - 1)).
     uint8[] smallArray; // Slot keccak256(4).
 
@@ -18,6 +18,7 @@ contract Array {
         assembly {
             // Get slot of fixed array.
             let slot := fixedArray.slot
+            let offset := mul(_index, 0x08)
 
             // Fixed arrays are not stored at the locations of the hash of their slots.
             // This is because, the length of the array has already been defined and it's slots can be
@@ -26,7 +27,7 @@ contract Array {
             // The value at index 0 takes the first storage slot, followed by the subsequent indexes.
             // Info: https://rb.gy/yvbfwf.
             // Increment slot by the index we want to read.
-            ret := sload(add(slot, _index))
+            ret := and(shr(offset, sload(0)), 0xff)
         }
     }
 
