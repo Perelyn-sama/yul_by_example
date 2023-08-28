@@ -11,7 +11,7 @@ contract Array {
 /*
 *   Array Variable    |   Slot(s) Occupied    |   Values Stored At Slot(s) [sload(slot)]
 *   __________________|_______________________|_____________________________________________________
-*   fixedU8Array      |   0 - 2               |   0 <= x <= 2 
+*   fixedU8Array      |   0                   |   (8 * (0 <= x <= 2)) >> 0 && 0xff
 *   dynamicU8Array    |   3                   |   keccak256(3) + (0 <= x < dynamicU8Array.length)
 *   fixedU256Array    |   4 - 6               |   4 <= x <= 6
 *   dynamicU256Array  |   7                   |   keccak256(7) + (0 <= x < dynamicU256Array.length)
