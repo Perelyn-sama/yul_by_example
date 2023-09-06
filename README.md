@@ -1,8 +1,17 @@
 ## Yul By Example 
 
-Basically we're trying to make [Solidity by example](https://solidity-by-example.org/) but for Yul.<br><br>
+Basically, we made [Solidity by example](https://solidity-by-example.org/) but for Yul :)<br><br>
 **Required Solidity Version**: v0.8.17.<br>
 **Required SPDX-License-Identifier**: MIT
+
+
+To see the book change live run:
+
+```sh
+mdbook serve
+```
+
+To run the book with docker, run:
 
 ### Contracts Implemented so far
 - [Array](/src/Array.sol)
@@ -31,31 +40,31 @@ Basically we're trying to make [Solidity by example](https://solidity-by-example
 - [ERC20](/src/YulERC20.sol)
 
 ### Docs
-- [Array](/docs/Array.md)
-- [Bitwise](/docs/Bitwise.md)
-- [Call](/docs/Call.md)
-- [Calldata](/docs/Calldata.md)
-- [Conditionals](/docs/Conditionals.md)
-- [Counter](/docs/Counter.md)
-- [Enums](/docs/Enums.md)
-- [Errors](/docs/Errors.md)
-- [Ether Wallet](/docs/EtherWallet.md)
-- [Events](/docs/Events.md)
-- [Fallback](/docs/Fallback.md)
-- [For Loop](/docs/ForLoop.md)
-- [Functions](/docs/Functions.md)
-- [Hash](/docs/Hash.md)
-- [Hello World](/docs/HelloWorld.md)
-- [Is Contract](/docs/IsContract.md)
-- [Mapping](/docs/Mapping.md)
-- [Safe Operations](/docs/SafeOperations.md)
-- [Send Ether](/docs/SendEther.md)
-- [Signature Verification](/docs/SignarureVerification.md)
-- [Simple Storage](/docs/SimpleStorage.md)
-- [Structs](/docs/Structs.md)
-- [Types](/docs/Types.md)
-- [Unchecked](/docs/Unchecked.md)
-- [Yul ERC20](/docs/YulERC20.md)
+- [Array](/book/src/Array.md)
+- [Bitwise](/book/src/Bitwise.md)
+- [Call](/book/src/Call.md)
+- [Calldata](/book/src/Calldata.md)
+- [Conditionals](/book/src/Conditionals.md)
+- [Counter](/book/src/Counter.md)
+- [Enums](/book/src/Enums.md)
+- [Errors](/book/src/Errors.md)
+- [Ether Wallet](/book/src/EtherWallet.md)
+- [Events](/book/src/Events.md)
+- [Fallback](/book/src/Fallback.md)
+- [For Loop](/book/src/ForLoop.md)
+- [Functions](/book/src/Functions.md)
+- [Hash](/book/src/Hash.md)
+- [Hello World](/book/src/HelloWorld.md)
+- [Is Contract](/book/src/IsContract.md)
+- [Mapping](/book/src/Mapping.md)
+- [Safe Operations](/book/src/SafeOperations.md)
+- [Send Ether](/book/src/SendEther.md)
+- [Signature Verification](/book/src/SignarureVerification.md)
+- [Simple Storage](/book/src/SimpleStorage.md)
+- [Structs](/book/src/Structs.md)
+- [Types](/book/src/Types.md)
+- [Unchecked](/book/src/Unchecked.md)
+- [Yul ERC20](/book/src/YulERC20.md)
 
 ## Contributors ✨
 
