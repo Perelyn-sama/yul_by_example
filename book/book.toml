@@ -1,0 +1,6 @@
+[book]
+authors = ["Perelyn"]
+language = "en"
+multilingual = false
+src = "src"
+title = "book"
