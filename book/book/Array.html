@@ -179,7 +179,7 @@ All 5 elements. Adding one element to the array will increment the value at slot
 Index 5 =&gt; <code>keccak256(c) + 5</code><br><br>
 Which is the <code>6th</code> element.</p>
 <h2 id="reading-from-an-array"><a class="header" href="#reading-from-an-array">Reading From An Array</a></h2>
-<p>While reading the elements of the <code>fixedU256Array</code> is simple, because, type <code>uint256</code> takes up 32 bytes, the same cannot be said for the <code>fixexU8Array</code> as they're packed and care would be taken to avoid messing up the value stored at that slot. We can always call an <code>sload(slot)</code> to get the value of any index stored at any slot.</p>
+<p>While reading the elements of the <code>fixedU256Array</code> is simple, because, type <code>uint256</code> takes up 32 bytes, the same cannot be said for the <code>fixedU8Array</code> as they're packed and care would be taken to avoid messing up the value stored at that slot. We can always call an <code>sload(slot)</code> to get the value of any index stored at any slot.</p>
 <p>However, for <code>fixedU8Array</code> on initialization:</p>
 <pre><code class="language-solidity">contract Array {
     uint8[3] public fixedU8Array;
@@ -193,7 +193,7 @@ Which is the <code>6th</code> element.</p>
 <p>Once the slot where the values of the <code>fixedU8Array</code> has been located, which we shall address as <code>loc</code>, we can call a simple <code>sload(loc)</code> to get the value stored at that slot, which will be returned as:</p>
 <pre><code class="language-solidity">0x0000000000000000000000000000000000000000000000000000000000030201
 </code></pre>
-<p>It will be packed, as stated earlier. We can then use a masking to return any index in the array based of the <code>uint8</code> type, <code>1 byte</code> by calculating its offset precisely.</p>
+<p>It will be packed, as stated earlier. We can then use a masking to return any index in the array based on the <code>uint8</code> type, <code>1 byte</code> by calculating its offset precisely.</p>
 <h3 id="more-info"><a class="header" href="#more-info">More Info</a></h3>
 <p><a href="https://rb.gy/yvbfwf">Click to read more.</a></p>
 
