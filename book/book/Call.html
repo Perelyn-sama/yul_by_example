@@ -155,7 +155,7 @@
 <p>Amount of gas to send in <code>call</code>, usually set to <code>gas()</code> or any specified number, <code>n</code>.</p>
 <h3 id="address"><a class="header" href="#address"><code>address</code></a></h3>
 <p>Address to make <code>call</code> to. If the address does not have a function that matches the identifier, the <code>fallback</code> function is called. If it doesn't have one, it returns <code>false</code>.</p>
-<p><code>NOTE</code>: <code>Call</code>s made to invalid addresses return true, <code>call</code> returns false on two occassions:</p>
+<p><code>NOTE</code>: Calls made to invalid addresses return true, <code>call</code> returns false on two occasions:</p>
 <ol>
 <li>The address has no <code>fallback</code> function.</li>
 <li>The function called reverts.</li>
@@ -163,7 +163,7 @@
 <h3 id="value"><a class="header" href="#value"><code>value</code></a></h3>
 <p>Amount in ETH to be sent.</p>
 <h3 id="dataoffset-and-datasize"><a class="header" href="#dataoffset-and-datasize"><code>dataOffset</code> and <code>dataSize</code></a></h3>
-<p>The <code>dataOffset</code> and <code>dataSize</code> are determined by the size of the encoded calldata sent to the <code>adderss</code>.</p>
+<p>The <code>dataOffset</code> and <code>dataSize</code> are determined by the size of the encoded calldata sent to the <code>address</code>.</p>
 <p>First, we store the function selector, <code>3fb5c1cb</code>, which we already have as a literal in location <code>0x00</code>, setting location <code>0x00</code> to <code>0x1f</code> to:</p>
 <pre><code class="language-assembly">0x000000000000000000000000000000000000000000000000000000003fb5c1cb
 </code></pre>
