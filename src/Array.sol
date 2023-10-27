@@ -20,7 +20,7 @@ contract Array {
             let slot := fixedArray.slot
 
             // Fixed arrays are not stored at the locations of the hash of their slots.
-            // This is because, the length of the array has already been defined and it's slots can be
+            // This is because, the length of the array has already been defined and its slots can be
             // mapped to it with no effects.
             // In this case, fixedArray elements are stored at indexes 0, 1 and 2.
             // The value at index 0 takes the first storage slot, followed by the subsequent indexes.
@@ -116,23 +116,38 @@ contract Array {
 
     function pushToArray(uint256 num) public {
         assembly {
+            // Store the value of the slot in memory at location 0x00.
             mstore(0x00, 0x03)
+
+            // Hash the first 20 bytes of memory location 0x00 and assign it to the `location` variable.
             let location := keccak256(0x00, 0x20)
+
+            // Load the value of location on storage.
             let count := sload(0x03)
 
+            // Increment the count by 1.
             sstore(0x03, add(count, 1))
+
+            // Store the value of num at the location of the dynamic array.
             sstore(add(location, count), num)
         }
     }
 
     function popArray() public {
         assembly {
+            // Store the value of the slot in memory at location 0x00.
             mstore(0x00, 0x03)
+
+            // Hash the first 20 bytes of memory location 0x00 and assign it to the `location` variable.
             let location := keccak256(0x00, 0x20)
+
+            // Load the value of location on storage.
             let count := sload(0x03)
 
+            // Revert if count is 0.
             if eq(count, 0) { revert(0x00, 0x00) }
 
+            // Decrement the count by 1 and set the value at the location of the dynamic array to 0.
             sstore(0x03, sub(count, 1))
             sstore(add(location, sub(count, 1)), 0x00)
         }
