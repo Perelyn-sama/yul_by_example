@@ -37,7 +37,7 @@ contract EtherWallet {
             }
             // call sends `_amount` number of ether to the address passed as the second argument, `caller()`.
             let sent := call(gas(), caller(), _amount, 0x00, 0x00, 0x00, 0x00)
-            // If the returned valud was false, then revert.
+            // If the returned value is false, then revert.
             if iszero(sent) {
                 revert(0x00, 0x00)
             }
