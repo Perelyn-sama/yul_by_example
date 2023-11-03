@@ -11,4 +11,4 @@ OR
 fallback() external payable {}
 ```
 
-In our [Fallback](../src/Fallback.sol) contract, it sends `1 Wei` to any caller.
+In our [Fallback](https://github.com/Perelyn-sama/yul_by_example/blob/main/src/Fallback.sol) contract, it sends `1 Wei` to any caller.
