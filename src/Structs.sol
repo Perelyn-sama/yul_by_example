@@ -62,33 +62,41 @@ contract PackedStruct {
     // This is to just show how they are retrieved from storage.
     function getFromPacking(uint8 val) public view returns (uint256) {
         assembly {
+            // Load the first storage slot into ourStruct
             let ourStruct := sload(0)
 
+            // If the input value is greater than 5, revert the transaction
             if gt(val, 5) {
                 revert (0, 0)
             }
 
-            // How do I even comment this 💀?
+            // Depending on the input value, retrieve the corresponding value from ourStruct. Here we have used `Bit Masking` and `Bit Shifting` to get the values.           
             switch val
             case 0 {
+                // If the input value is 0, retrieve the first value from ourStruct
                 mstore(0x00, and(ourStruct, 0xf0f0ff0fffffff0fffffffffffffff0fffffffffffffffffffffffffffffffff))
             }
             case 1 {
+                // If the input value is 1, retrieve the second value from ourStruct
                 mstore(0x00, shr(mul(0x10, 0x08), and(ourStruct, 0xf0f0ff0fffffff0fffffffffffffffffffffffffffffffffffffffffffffff0f)))
             }
             case 2 {
+                // If the input value is 2, retrieve the third value from ourStruct
                 mstore(0x00, shr(mul(0x18, 0x08), and(ourStruct, 0xf0f0ff0fffffffffffffffffffffff0fffffffffffffffffffffffffffffff0f)))
             }
             case 3 {
+                // If the input value is 3, retrieve the fourth value from ourStruct
                 mstore(0x00, shr(mul(0x1c, 0x08), and(ourStruct, 0xf0f0ffffffffff0fffffffffffffff0fffffffffffffffffffffffffffffff0f)))
             }
             case 4 {
+                // If the input value is 4, retrieve the fifth value from ourStruct
                 mstore(0x00, shr(mul(0x1e, 0x08), and(ourStruct, 0xf0ffff0fffffff0fffffffffffffff0fffffffffffffffffffffffffffffff0f)))
             }
             case 5 {
+                // If the input value is 5, retrieve the sixth value from ourStruct
                 mstore(0x00, shr(mul(0x1f, 0x08), and(ourStruct, 0xfff0ff0fffffff0fffffffffffffff0fffffffffffffffffffffffffffffff0f)))
             }
-
+            
             return (0x00, 0x20)
         }
     }
