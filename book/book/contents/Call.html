@@ -1,40 +1,41 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Call - book</title>
+        <title>Call - Yul By Example</title>
 
 
         <!-- Custom HTML head -->
         
-        <meta name="description" content="">
+        <meta name="description" content="A beginner&#x27;s guide to basic Solidity implementations in inline Assembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -60,40 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="Array.html"><strong aria-hidden="true">1.</strong> Array</a></li><li class="chapter-item expanded "><a href="Bitwise.html"><strong aria-hidden="true">2.</strong> Bitwise</a></li><li class="chapter-item expanded "><a href="Call.html" class="active"><strong aria-hidden="true">3.</strong> Call</a></li><li class="chapter-item expanded "><a href="Calldata.html"><strong aria-hidden="true">4.</strong> Calldata</a></li><li class="chapter-item expanded "><a href="Conditionals.html"><strong aria-hidden="true">5.</strong> Conditionals</a></li><li class="chapter-item expanded "><a href="Counter.html"><strong aria-hidden="true">6.</strong> Counter</a></li><li class="chapter-item expanded "><a href="Enums.html"><strong aria-hidden="true">7.</strong> Enums</a></li><li class="chapter-item expanded "><a href="Errors.html"><strong aria-hidden="true">8.</strong> Errors</a></li><li class="chapter-item expanded "><a href="EtherWallet.html"><strong aria-hidden="true">9.</strong> Ether Wallet</a></li><li class="chapter-item expanded "><a href="Events.html"><strong aria-hidden="true">10.</strong> Events</a></li><li class="chapter-item expanded "><a href="Fallback.html"><strong aria-hidden="true">11.</strong> Fallback</a></li><li class="chapter-item expanded "><a href="ForLoop.html"><strong aria-hidden="true">12.</strong> For Loop</a></li><li class="chapter-item expanded "><a href="Functions.html"><strong aria-hidden="true">13.</strong> Functions</a></li><li class="chapter-item expanded "><a href="Hash.html"><strong aria-hidden="true">14.</strong> Hash</a></li><li class="chapter-item expanded "><a href="HelloWorld.html"><strong aria-hidden="true">15.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="IsContract.html"><strong aria-hidden="true">16.</strong> Is Contract</a></li><li class="chapter-item expanded "><a href="Mapping.html"><strong aria-hidden="true">17.</strong> Mapping</a></li><li class="chapter-item expanded "><a href="SafeOperations.html"><strong aria-hidden="true">18.</strong> Safe Operations</a></li><li class="chapter-item expanded "><a href="SendEther.html"><strong aria-hidden="true">19.</strong> Send Ether</a></li><li class="chapter-item expanded "><a href="SignarureVerification.html"><strong aria-hidden="true">20.</strong> Signature Verification</a></li><li class="chapter-item expanded "><a href="SimpleStorage.html"><strong aria-hidden="true">21.</strong> Simple Storage</a></li><li class="chapter-item expanded "><a href="Structs.html"><strong aria-hidden="true">22.</strong> Structs</a></li><li class="chapter-item expanded "><a href="Types.html"><strong aria-hidden="true">23.</strong> Types</a></li><li class="chapter-item expanded "><a href="Unchecked.html"><strong aria-hidden="true">24.</strong> Unchecked</a></li><li class="chapter-item expanded "><a href="YulERC20.html"><strong aria-hidden="true">25.</strong> Yul ERC20</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introduction/Introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../contents/Array.html"><strong aria-hidden="true">2.</strong> Array</a></li><li class="chapter-item expanded "><a href="../contents/Bitwise.html"><strong aria-hidden="true">3.</strong> Bitwise</a></li><li class="chapter-item expanded "><a href="../contents/Call.html" class="active"><strong aria-hidden="true">4.</strong> Call</a></li><li class="chapter-item expanded "><a href="../contents/Calldata.html"><strong aria-hidden="true">5.</strong> Calldata</a></li><li class="chapter-item expanded "><a href="../contents/Conditionals.html"><strong aria-hidden="true">6.</strong> Conditionals</a></li><li class="chapter-item expanded "><a href="../contents/Counter.html"><strong aria-hidden="true">7.</strong> Counter</a></li><li class="chapter-item expanded "><a href="../contents/Enums.html"><strong aria-hidden="true">8.</strong> Enums</a></li><li class="chapter-item expanded "><a href="../contents/Errors.html"><strong aria-hidden="true">9.</strong> Errors</a></li><li class="chapter-item expanded "><a href="../contents/EtherWallet.html"><strong aria-hidden="true">10.</strong> Ether Wallet</a></li><li class="chapter-item expanded "><a href="../contents/Events.html"><strong aria-hidden="true">11.</strong> Events</a></li><li class="chapter-item expanded "><a href="../contents/Fallback.html"><strong aria-hidden="true">12.</strong> Fallback</a></li><li class="chapter-item expanded "><a href="../contents/ForLoop.html"><strong aria-hidden="true">13.</strong> For Loop</a></li><li class="chapter-item expanded "><a href="../contents/Functions.html"><strong aria-hidden="true">14.</strong> Functions</a></li><li class="chapter-item expanded "><a href="../contents/Hash.html"><strong aria-hidden="true">15.</strong> Hash</a></li><li class="chapter-item expanded "><a href="../contents/HelloWorld.html"><strong aria-hidden="true">16.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="../contents/IsContract.html"><strong aria-hidden="true">17.</strong> Is Contract</a></li><li class="chapter-item expanded "><a href="../contents/Mapping.html"><strong aria-hidden="true">18.</strong> Mapping</a></li><li class="chapter-item expanded "><a href="../contents/SafeOperations.html"><strong aria-hidden="true">19.</strong> Safe Operations</a></li><li class="chapter-item expanded "><a href="../contents/SendEther.html"><strong aria-hidden="true">20.</strong> Send Ether</a></li><li class="chapter-item expanded "><a href="../contents/SignarureVerification.html"><strong aria-hidden="true">21.</strong> Signature Verification</a></li><li class="chapter-item expanded "><a href="../contents/SimpleStorage.html"><strong aria-hidden="true">22.</strong> Simple Storage</a></li><li class="chapter-item expanded "><a href="../contents/Structs.html"><strong aria-hidden="true">23.</strong> Structs</a></li><li class="chapter-item expanded "><a href="../contents/Types.html"><strong aria-hidden="true">24.</strong> Types</a></li><li class="chapter-item expanded "><a href="../contents/Unchecked.html"><strong aria-hidden="true">25.</strong> Unchecked</a></li><li class="chapter-item expanded "><a href="../contents/YulERC20.html"><strong aria-hidden="true">26.</strong> Yul ERC20</a></li><li class="chapter-item expanded "><a href="../about/authors.html"><strong aria-hidden="true">27.</strong> Authors</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -109,10 +141,10 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">book</h1>
+                    <h1 class="menu-title">Yul By Example</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -155,7 +187,7 @@
 <p>Amount of gas to send in <code>call</code>, usually set to <code>gas()</code> or any specified number, <code>n</code>.</p>
 <h3 id="address"><a class="header" href="#address"><code>address</code></a></h3>
 <p>Address to make <code>call</code> to. If the address does not have a function that matches the identifier, the <code>fallback</code> function is called. If it doesn't have one, it returns <code>false</code>.</p>
-<p><code>NOTE</code>: Calls made to invalid addresses return true, <code>call</code> returns false on two occasions:</p>
+<p><code>NOTE</code>: <code>Call</code>s made to invalid addresses return true, <code>call</code> returns false on two occassions:</p>
 <ol>
 <li>The address has no <code>fallback</code> function.</li>
 <li>The function called reverts.</li>
@@ -163,7 +195,7 @@
 <h3 id="value"><a class="header" href="#value"><code>value</code></a></h3>
 <p>Amount in ETH to be sent.</p>
 <h3 id="dataoffset-and-datasize"><a class="header" href="#dataoffset-and-datasize"><code>dataOffset</code> and <code>dataSize</code></a></h3>
-<p>The <code>dataOffset</code> and <code>dataSize</code> are determined by the size of the encoded calldata sent to the <code>address</code>.</p>
+<p>The <code>dataOffset</code> and <code>dataSize</code> are determined by the size of the encoded calldata sent to the <code>adderss</code>.</p>
 <p>First, we store the function selector, <code>3fb5c1cb</code>, which we already have as a literal in location <code>0x00</code>, setting location <code>0x00</code> to <code>0x1f</code> to:</p>
 <pre><code class="language-assembly">0x000000000000000000000000000000000000000000000000000000003fb5c1cb
 </code></pre>
@@ -193,11 +225,11 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="Bitwise.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../contents/Bitwise.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="Calldata.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../contents/Calldata.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -207,11 +239,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="Bitwise.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../contents/Bitwise.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="Calldata.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../contents/Calldata.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -242,16 +274,17 @@
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
 
         <!-- Custom JS scripts -->
 
 
+    </div>
     </body>
 </html>
