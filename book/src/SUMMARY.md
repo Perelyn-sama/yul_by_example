@@ -7,3 +7,6 @@
 - [Yul's Advantages](./1-introduction/1-4-yul's-advantages.md)
 - [Yul's Disadvantage](./1-introduction/1-5-yul's-disadvantage.md)
 - [Code Layout](./1-introduction/1-6-code-layout.md)
+
+# Authors
+- [Authors](./2-authors/2-1-authors.md)

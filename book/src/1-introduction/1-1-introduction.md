@@ -1,5 +1,7 @@
 # Introduction _(What is this book about?)_
 
+---
+
 Hello there!
 
 This is a book about Yul, a low-level, intermediate language written alongside Solidity that can be compiled to bytecode for different backends [[1](https://docs.soliditylang.org/en/latest/yul.html#yul)].
