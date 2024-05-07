@@ -88,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="../1-introduction/1-1-introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-2-what-is-yul.html"><strong aria-hidden="true">2.</strong> What Is Yul?</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-3-why-is-yul-important.html"><strong aria-hidden="true">3.</strong> Why Is Yul Important?</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-4-yul's-advantages.html"><strong aria-hidden="true">4.</strong> Yul's Advantages</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-5-yul's-disadvantage.html"><strong aria-hidden="true">5.</strong> Yul's Disadvantage</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-6-code-layout.html"><strong aria-hidden="true">6.</strong> Code Layout</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="../2-authors/2-1-authors.html"><strong aria-hidden="true">7.</strong> Authors</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Solidity's Storage And Memory</li><li class="chapter-item expanded "><a href="../3-solidity's-storage-and-memory/3-1-solidity's-storage-and-memory.html" class="active"><strong aria-hidden="true">8.</strong> Solidity's Storage And Memory</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Solidity's Storage And Memory Layout</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Using Yul To Read And Write Directly To Storage And Memory</div></li></ol>
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="../1-introduction/1-1-introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-2-what-is-yul.html"><strong aria-hidden="true">2.</strong> What Is Yul?</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-3-why-is-yul-important.html"><strong aria-hidden="true">3.</strong> Why Is Yul Important?</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-4-yul's-advantages.html"><strong aria-hidden="true">4.</strong> Yul's Advantages</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-5-yul's-disadvantage.html"><strong aria-hidden="true">5.</strong> Yul's Disadvantage</a></li><li class="chapter-item expanded "><a href="../1-introduction/1-6-code-layout.html"><strong aria-hidden="true">6.</strong> Code Layout</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="../2-authors/2-1-authors.html"><strong aria-hidden="true">7.</strong> Authors</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Solidity's Storage And Memory</li><li class="chapter-item expanded "><a href="../3-solidity's-storage-and-memory/3-1-solidity's-storage-and-memory.html" class="active"><strong aria-hidden="true">8.</strong> Solidity's Storage And Memory</a></li><li class="chapter-item expanded "><a href="../3-solidity's-storage-and-memory/3-2-solidity's-storage-and-memory-layout.html"><strong aria-hidden="true">9.</strong> Solidity's Storage And Memory Layout</a></li><li class="chapter-item expanded "><a href="../3-solidity's-storage-and-memory/3-3-using-yul-to-read-and-write-directly-to-storage-and-memory.html"><strong aria-hidden="true">10.</strong> Using Yul To Read And Write Directly To Storage And Memory</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -174,6 +174,14 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="soliditys-storage-and-memory"><a class="header" href="#soliditys-storage-and-memory">Solidity's Storage And Memory</a></h1>
+<p>Solidity offers us two locations for data storage:</p>
+<ul>
+<li>Storage</li>
+<li>Memory</li>
+</ul>
+<p>The <strong>storage</strong> includes data that persist on the smart contract. All your public, internal and private variables are stored in the storage location.</p>
+<p>The <strong>memory</strong>, however is a temporary storage location that is assigned and cleared on every function call. It doesn't persist.</p>
+<p>You can understand more about what the storage and memory locations entail in this article <a href="https://medium.com/@ozorawachie/solidity-storage-layout-and-slots-a-comprehensive-guide-2cee71817ed8#:~:text=Solidity%20provides%20two%20types%20of,after%20the%20contract%20is%20terminated.">here</a>.</p>
 
                     </main>
 
@@ -183,6 +191,9 @@
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
+                            <a rel="next prefetch" href="../3-solidity&#x27;s-storage-and-memory/3-2-solidity&#x27;s-storage-and-memory-layout.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -194,6 +205,9 @@
                         <i class="fa fa-angle-left"></i>
                     </a>
 
+                    <a rel="next prefetch" href="../3-solidity&#x27;s-storage-and-memory/3-2-solidity&#x27;s-storage-and-memory-layout.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
             </nav>
 
         </div>
