@@ -26,3 +26,5 @@
 
 # Yul Implementations
 - [Starting Yul In A Smart Contract](4-yul-implementations/4-1-starting-yul-in-a-solidity-contract.md)
+- [Variable Storage In Storage](4-yul-implementations/4-2-variable-storage-in-storage/4-2-0-variable-storage-in-storage.md)
+  - [uint8, uint128, uint256](4-yul-implementations/4-2-variable-storage-in-storage/4-2-1-uint8-uint128-uint256.md)
