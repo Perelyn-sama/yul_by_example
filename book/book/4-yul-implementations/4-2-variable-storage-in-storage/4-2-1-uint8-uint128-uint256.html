@@ -3,8 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Yul By Example</title>
-        <meta name="robots" content="noindex">
+        <title>uint8, uint128, uint256 - Yul By Example</title>
 
 
         <!-- Custom HTML head -->
@@ -13,21 +12,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="icon" href="favicon.svg">
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link rel="stylesheet" href="fonts/fonts.css">
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
@@ -36,7 +35,7 @@
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
-            var path_to_root = "";
+            var path_to_root = "../../";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
@@ -89,7 +88,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="1-introduction/1-1-introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="1-introduction/1-2-what-is-yul.html"><strong aria-hidden="true">2.</strong> What Is Yul?</a></li><li class="chapter-item expanded "><a href="1-introduction/1-3-why-is-yul-important.html"><strong aria-hidden="true">3.</strong> Why Is Yul Important?</a></li><li class="chapter-item expanded "><a href="1-introduction/1-4-yul's-advantages.html"><strong aria-hidden="true">4.</strong> Yul's Advantages</a></li><li class="chapter-item expanded "><a href="1-introduction/1-5-yul's-disadvantage.html"><strong aria-hidden="true">5.</strong> Yul's Disadvantage</a></li><li class="chapter-item expanded "><a href="1-introduction/1-6-code-layout.html"><strong aria-hidden="true">6.</strong> Code Layout</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="2-authors/2-1-authors.html"><strong aria-hidden="true">7.</strong> Authors</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Solidity's Storage And Memory</li><li class="chapter-item expanded "><a href="3-solidity's-storage-and-memory/3-1-solidity's-storage-and-memory.html"><strong aria-hidden="true">8.</strong> Solidity's Storage And Memory</a></li><li class="chapter-item expanded "><a href="3-solidity's-storage-and-memory/3-2-solidity's-storage-and-memory-layout.html"><strong aria-hidden="true">9.</strong> Solidity's Storage And Memory Layout</a></li><li class="chapter-item expanded "><a href="3-solidity's-storage-and-memory/3-3-using-yul-to-read-and-write-directly-to-storage-and-memory.html"><strong aria-hidden="true">10.</strong> Using Yul To Read And Write Directly To Storage And Memory</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Yul Implementations</li><li class="chapter-item expanded "><a href="4-yul-implementations/4-1-starting-yul-in-a-solidity-contract.html"><strong aria-hidden="true">11.</strong> Starting Yul In A Smart Contract</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-0-variable-storage-in-storage.html"><strong aria-hidden="true">12.</strong> Variable Storage In Storage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-1-uint8-uint128-uint256.html"><strong aria-hidden="true">12.1.</strong> uint8, uint128, uint256</a></li></ol></li></ol>
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="../../1-introduction/1-1-introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="../../1-introduction/1-2-what-is-yul.html"><strong aria-hidden="true">2.</strong> What Is Yul?</a></li><li class="chapter-item expanded "><a href="../../1-introduction/1-3-why-is-yul-important.html"><strong aria-hidden="true">3.</strong> Why Is Yul Important?</a></li><li class="chapter-item expanded "><a href="../../1-introduction/1-4-yul's-advantages.html"><strong aria-hidden="true">4.</strong> Yul's Advantages</a></li><li class="chapter-item expanded "><a href="../../1-introduction/1-5-yul's-disadvantage.html"><strong aria-hidden="true">5.</strong> Yul's Disadvantage</a></li><li class="chapter-item expanded "><a href="../../1-introduction/1-6-code-layout.html"><strong aria-hidden="true">6.</strong> Code Layout</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="../../2-authors/2-1-authors.html"><strong aria-hidden="true">7.</strong> Authors</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Solidity's Storage And Memory</li><li class="chapter-item expanded "><a href="../../3-solidity's-storage-and-memory/3-1-solidity's-storage-and-memory.html"><strong aria-hidden="true">8.</strong> Solidity's Storage And Memory</a></li><li class="chapter-item expanded "><a href="../../3-solidity's-storage-and-memory/3-2-solidity's-storage-and-memory-layout.html"><strong aria-hidden="true">9.</strong> Solidity's Storage And Memory Layout</a></li><li class="chapter-item expanded "><a href="../../3-solidity's-storage-and-memory/3-3-using-yul-to-read-and-write-directly-to-storage-and-memory.html"><strong aria-hidden="true">10.</strong> Using Yul To Read And Write Directly To Storage And Memory</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Yul Implementations</li><li class="chapter-item expanded "><a href="../../4-yul-implementations/4-1-starting-yul-in-a-solidity-contract.html"><strong aria-hidden="true">11.</strong> Starting Yul In A Smart Contract</a></li><li class="chapter-item expanded "><a href="../../4-yul-implementations/4-2-variable-storage-in-storage/4-2-0-variable-storage-in-storage.html"><strong aria-hidden="true">12.</strong> Variable Storage In Storage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../4-yul-implementations/4-2-variable-storage-in-storage/4-2-1-uint8-uint128-uint256.html" class="active"><strong aria-hidden="true">12.1.</strong> uint8, uint128, uint256</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -145,7 +144,7 @@
                     <h1 class="menu-title">Yul By Example</h1>
 
                     <div class="right-buttons">
-                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
 
@@ -174,170 +173,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="introduction-what-is-this-book-about"><a class="header" href="#introduction-what-is-this-book-about">Introduction <em>(What is this book about?)</em></a></h1>
-<hr />
-<p>Hello there!</p>
-<p>This is a book about Yul, a low-level, intermediate language written alongside Solidity that can be compiled to bytecode for different backends [<a href="https://docs.soliditylang.org/en/latest/yul.html#yul">1</a>].</p>
-<p>Over the course of this book, we are going to go through what Yul is, why it is important, its advantage and disadvantage over Solidity and its implementations in a smart contract.</p>
-<p>Also, we will see how storage and memory are laid out in Solidity and how we would harness the power of Yul to infiltrate and modify to our taste.</p>
-<p>Enjoy!</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-yul"><a class="header" href="#what-is-yul">What Is Yul?</a></h1>
-<hr />
-<p>Yul is an intermediate language that compiles to Ethereum Virtual Machine (EVM) bytecode. It is designed to be a
-low-level language that gives developers a high degree of control over the execution of their smart contracts. It is
-similar in many ways to Assembly but with higher-level features that make it easier to work with [<a href="https://www.quicknode.com/guides/ethereum-development/smart-contracts/what-is-yul#what-is-yul">2</a>].</p>
-<p>Yul was previously called <strong>Julia</strong> or <strong>Iulia</strong>.</p>
-<p>Within the context of smart contract development, Yul is usually referred to as <strong>Inline Assembly</strong>. As it is very
-similar to Assembly and is written within functions in smart contract code.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="why-is-yul-important"><a class="header" href="#why-is-yul-important">Why Is Yul Important?</a></h1>
-<hr />
-<p>During smart contract development process, there are actions, or manipulations which are not feasible for the
-programmer from the high-level Solidity code. Using Yul, the programmer is given much more fine-grained control over
-the storage, memory and in some cases calldata layout of the EVM. This control also allows for much more gas efficient code to be written.</p>
-<p>The flexibility and gas optimization of Yul are what makes it important.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="yuls-advantage"><a class="header" href="#yuls-advantage">Yul's Advantage</a></h1>
-<hr />
-<p>As stated in the <a href="1-introduction/1-3-why-is-yul-important.html">previous chapter</a>, the ability to manipulate the storage, memory or calldata layout to the programmer's taste with an extra benefit of much more gas optimized code is Yul's major advantage over Solidity.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="yuls-disadvantage"><a class="header" href="#yuls-disadvantage">Yul's Disadvantage</a></h1>
-<hr />
-<p>As with everything without control limits, the wrong modification, setting or manipulation of the storage or memory layout has the potential of breaching the security of the smart contract, rendering it useless till eternity, or putting users' funds at risk.</p>
-<p>For this reason, it is advised that before writing Yul, one must understand the risks involved, and also, the workings of the EVM.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="code-layout"><a class="header" href="#code-layout">Code Layout</a></h1>
-<hr />
-<p>Every piece of Yul code written here can be rerun on <a href="https://remix.ethereum.org/">Remix</a>.</p>
-<p>Remix is an online smart contract development suite. It also offers a way of observing the process of EVM layouts and storage. It will be used over the course of this book, and you can replicate whatever we have done here on the suite.</p>
-<p>It is also recommended that you keep <a href="https://evm.codes">evm.codes</a> handy over your course of learning and practising Yul, and even after you've understood. It is a magnificent resource.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="authors"><a class="header" href="#authors">Authors</a></h1>
-<hr />
-<ul>
-<li>
-<p><strong>Perelyn</strong>, (<a href="https://twitter.com/okohebina">@okohebina</a>).</p>
-</li>
-<li>
-<p><strong>fps</strong>, (<a href="https://twitter.com/0xfps">@0xfps</a>).</p>
-</li>
-<li>
-<p><strong>Aryan Malik</strong>, (<a href="https://github.com/0xscratch">@0xscratch</a>).</p>
-</li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="soliditys-storage-and-memory"><a class="header" href="#soliditys-storage-and-memory">Solidity's Storage And Memory</a></h1>
-<p>Solidity offers us two locations for data storage:</p>
-<ul>
-<li>Storage</li>
-<li>Memory</li>
-</ul>
-<p>The <strong>storage</strong> includes data that persist on the smart contract. All your public, internal and private variables are stored in the storage location.</p>
-<p>The <strong>memory</strong>, however is a temporary storage location that is assigned and cleared on every function call. It doesn't persist.</p>
-<p>You can understand more about what the storage and memory locations entail in this article <a href="https://medium.com/@ozorawachie/solidity-storage-layout-and-slots-a-comprehensive-guide-2cee71817ed8#:~:text=Solidity%20provides%20two%20types%20of,after%20the%20contract%20is%20terminated.">here</a>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="soliditys-storage-and-memory-layout"><a class="header" href="#soliditys-storage-and-memory-layout">Solidity's Storage And Memory Layout</a></h1>
-<p>We have understood what the storage and memory are. Persistent and temporary, respectively. Now we are going to take a look at how these two data storage locations are laid out.</p>
-<h3 id="storage"><a class="header" href="#storage">Storage</a></h3>
-<p>Solidity's storage layout has a finite amount of space, which is broken down into 32-byte groups called <code>slots</code>, and each slot can hold a 256-bit value. These slots start from index 0 and can stretch to a theoretical index limit of somewhere around <code>(2^256) - 1</code>. It is safe to say that the storage can never get full. Cool, isn't it?</p>
-<p>Values stored in storage slots are stored as <code>bytes32</code> values, and sometimes, can be packed, as we will see later on in this book. To retrieve the value of a Solidity storage variable, the 32-byte value stored in the corresponding slot is retrieved. In some cases - when the value in the slot has been packed -, the value retrieved is worked on by methods of shifting or masking to retrieve the desired value.</p>
-<blockquote>
-<p>💡 Remember when we said one should know how the EVM works before moving on with Yul? Yeah, that's one of the reasons why. You cannot retrieve what you do not know how it was stored.</p>
-</blockquote>
-<h3 id="memory"><a class="header" href="#memory">Memory</a></h3>
-<p>Solidity's memory layout, unlike the storage layout is quite tricky. While the storage has a defined maximum slot
-index of
-<code>(2 **256) - 1</code> that can hold 32-byte values, the memory is a large group of 32-byte slots that their data can not
-be retrieved by passing a slot index. But instead, data stored in the memory are retrieved by picking
-a particular location and returning a specific number of bytes from that point in the memory.</p>
-<p>"Why?", you may ask, it is because the default number of bytes returned from any point in memory is <code>32</code> and in
-cases where the point started from is the middle of a particular 32-byte slot, it will encroach into the next slot.</p>
-<p>You can imagine memory slots as laid out end to end, in a way that data retrieval can be started from any point and
-stopped at any point. Unlike storage that returns only the 32-bytes stored at an index, nothing more, nothing less.</p>
-<p>If you do not understand that, do not
-sweat it. You will get a better grasp of it when we talk about <a href="3-solidity&#x27;s-storage-and-memory/">variable storage in memory</a>.</p>
-<p>These positions in memory start from <code>0x00</code> and are in groups of 32-bytes, meaning that the slots are in th is way:</p>
-<p><code>0x00</code> - <code>0x1f</code> <br>
-<code>0x20</code> - <code>0x3f</code> <br>
-<code>0x40</code> - <code>0x5f</code> <br>
-<code>0x60</code> - <code>0x7f</code> <br>
-... <br>
-<code>0xm0</code> - <code>0xnf</code></p>
-<p>According to the <a href="https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html">Solidity Docs</a>, there are
-some reserved memory slots for some purposes.</p>
-<p><code>0x00</code> - <code>0x3f</code> (64 bytes): Scratch space for hashing methods. <br>
-<code>0x40</code> - <code>0x5f</code> (32 bytes): Currently allocated memory size (aka. free memory pointer). <br>
-<code>0x60</code> - <code>0x7f</code> (32 bytes): Zero slot.</p>
-<p>Scratch space can be used between statements (i.e. within inline assembly). The zero slot is used as initial value
-for dynamic memory arrays and should never be written to (the free memory pointer points to 0x80 initially) [<a href="https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html">3</a>].</p>
-<blockquote>
-<p>💡 Position <code>0x40</code> always holds the next free memory location.</p>
-</blockquote>
-<blockquote>
-<p>💡 It is safest to use <code>mload(0x40)</code> to get the next free memory pointer when trying to store data to memory as
-storing in a memory location with existing data overwrites that location.</p>
-</blockquote>
-<blockquote>
-<p>💡 The positions we will use over the course of this book to access memory points will be written in hexadecimals
-(<code>0x**</code>)
-as it's easier to read, since the EVM already deals in hexadecimals.</p>
-</blockquote>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="using-yul-to-read-and-write-directly-to-storage-and-memory"><a class="header" href="#using-yul-to-read-and-write-directly-to-storage-and-memory">Using Yul To Read And Write Directly To Storage And Memory</a></h1>
-<p>Remember when we said keep <a href="https://evm.codes">evm.codes</a> handy? You can go to the website and take a look at some Yul commands. Take note of the <code>mload</code>, <code>mstore</code>, <code>mstore8</code>, <code>sload</code> and <code>sstore</code>.</p>
-<p><code>mload</code> is short for Memory Load. <br>
-<code>mstore</code> is short for Memory Store. <br>
-<code>mstore8</code> is short for Memory Store 8-Bits or Memory Store 1-Byte. <br>
-<code>sload</code> is short for Storage Load. <br>
-<code>sstore</code> is short for Storage Store.</p>
-<p>Depending on the location you want to store your value to or read your values from, you have to use one of these.</p>
-<p>In the next chapters, we will head into reading from and writing data to our Solidity storage and memory locations.</p>
-<p>This is where the fun begins. I hope you like risky fun.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="starting-yul-in-a-solidity-contract"><a class="header" href="#starting-yul-in-a-solidity-contract">Starting Yul In A Solidity Contract</a></h1>
-<p>Yul, as you know by now, is written inside Solidity functions. To start off a Yul code in a Solidity function, you simply declare the <code>assembly</code> keyword, followed by curly braces. Your Yul (Inline Assembly) code can then come inside the curly braces.</p>
-<pre><code class="language-solidity">assembly {
-    // You can now write Yul here.
-}
-</code></pre>
-<p>In a proper Solidity function, using the above, you'd have something like this.</p>
-<pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.0;
-
-contract Yul {
-    function yulFunction() public {
-        assembly {
-            // Yul code here.
-        }
-    }
-}
-</code></pre>
-<p>You can have more than one <code>assembly</code> block in a function.</p>
-<pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.0;
-
-contract Yul {
-    function yulFunctions() public {
-        assembly {
-            // Yul code here.
-        }
-
-        assembly {
-            // Another Yul code here.
-        }
-    }
-}
-</code></pre>
-<p>Variables in Yul are declared with <code>let</code> keyword. A delcared variable that has not been initialized (<code>y</code> below) defaults to 0, <code>0x0000000000000000000000000000000000000000000000000000000000000000</code> in bytes32 until it is assigned a value. They are assigned using the <code>:=</code> operator. Most importantly, there are no semicolons in Yul code. Whew!</p>
-<pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
-pragma solidity ^0.8.0;
-
-contract Yul {
-    function yulFunction() public {
-        assembly {
-            let x := 5
-            let y // Defaults to 0.
-            y := 10
-        }
-    }
-}
-</code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="variable-storage-in-storage"><a class="header" href="#variable-storage-in-storage">Variable Storage In Storage</a></h1>
-<ul>
-<li><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-yul-implementations/4-2-variable-storage-in-storage/4-2-1-uint.html">uint8, uint128, uint256</a></li>
-</ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="uint8-uint128-uint256"><a class="header" href="#uint8-uint128-uint256">uint8, uint128, uint256</a></h1>
+                        <h1 id="uint8-uint128-uint256"><a class="header" href="#uint8-uint128-uint256">uint8, uint128, uint256</a></h1>
 <p>Unsigned integers are stored in memory based on the size of bytes they have. While sm all uint values like uint8 have 1 byte, uint256 has 32 bytes. Solidity's storage is designed in such a way that it can contain up to 32 bytes of value in one slot. In a situation where a variable doesn't contain up to 32 bytes, the value is stored and the next variable will be <strong>packed</strong> into the same slot, on the condition that when the bytes are added to the slot, it doesn't exceed 32 bytes.</p>
 <p><code>uint256</code> =&gt; 32 bytes =&gt; Slot 0. <br>
 This is the maximum, hence it occupies an entire slot of its own. Whatever bytes we are going to add will exceed 32 and hence, will pick up the next slot, slot 1.</p>
@@ -541,6 +377,9 @@ contract Yul {
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../4-yul-implementations/4-2-variable-storage-in-storage/4-2-0-variable-storage-in-storage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
 
 
                         <div style="clear: both"></div>
@@ -549,6 +388,9 @@ contract Yul {
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../4-yul-implementations/4-2-variable-storage-in-storage/4-2-0-variable-storage-in-storage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
 
             </nav>
 
@@ -578,21 +420,16 @@ contract Yul {
         </script>
 
 
-        <script src="elasticlunr.min.js"></script>
-        <script src="mark.min.js"></script>
-        <script src="searcher.js"></script>
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
 
-        <script src="clipboard.min.js"></script>
-        <script src="highlight.js"></script>
-        <script src="book.js"></script>
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
 
         <!-- Custom JS scripts -->
 
-        <script>
-        window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
-        });
-        </script>
 
     </div>
     </body>

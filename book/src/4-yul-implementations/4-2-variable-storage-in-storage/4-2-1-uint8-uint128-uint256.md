@@ -113,6 +113,36 @@ Calling the `getUint8` function returns `0x0000000000000000000000000000000000000
 
 Retrieving values from this one is not as straight forward as it was, this is where we consider `offsets`, `shifts` and `masks` in Yul.
 
+```solidity
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.0;
+
+contract Yul {
+    uint8 internal uint1 = 1; // Slot 0, offset 0.
+    uint8 internal uint2 = 2; // Slot 0, offset 1.
+    uint8 internal uint3 = 3; // Slot 0, offset 2.
+    uint8 internal uint4 = 4; // Slot 0, offset 3.
+    uint8 internal uint5 = 5; // Slot 0, offset 4.
+    
+    // Return the value of the 5th uint8 variable.
+    function getUint8() public view returns (bytes32) {
+        assembly {
+            let val := sload(0x00)
+            let bytesToShiftLeft := sub(0x20, add(uint5.offset, 0x01))
+            let leftShift := shl(mul(bytesToShiftLeft, 0x08), val)
+            let rightShift := shr(mul(0x1f, 0x08), leftShift)
+            mstore(0x80, rightShift)
+            return(0x80, 0x20)
+        }
+    }
+}
+```
+You can get the offset of a variable in storage by passing `<variableName>.offset`. And likewise, you can get the slot of any variable in storage by passing `<variableName>.slot`. Easier than calculating, isn't it?
+
+If you can understand the layout of the data you're returning, you can then manipulate it to return what you desire. We will see how this works when we take a look at arrays. If you can't understand it at the moment, do not fret. Practise, play around with `offset` and `shift`.
+
+> 🚨 Understand the layout of your values before using Yul to manipulate them.
+
 ### Single uint128 Value
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
@@ -137,6 +167,7 @@ contract Yul {
     }
 }
 ```
+> Returns `0x0000000000000000000000000000000000000000000000000000001234567890`.
 
 ### Packed uint128 Value
 ```solidity
@@ -157,6 +188,7 @@ contract Yul {
     }
 }
 ```
+> Returns `0x00000000000000000000087649ce27070000000000000000000008f3442bfef2`.
 
 ### Single uint256 Value
 ```solidity
@@ -182,3 +214,4 @@ contract Yul {
     }
 }
 ```
+> Returns `0x0000000000000000000000000000000000000000000000001234567890abcdef`.
