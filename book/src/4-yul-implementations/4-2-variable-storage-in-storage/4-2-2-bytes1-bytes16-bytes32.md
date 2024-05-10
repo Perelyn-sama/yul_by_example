@@ -1,4 +1,4 @@
-# bytes1, bytes16, bytes32
+# `bytes1`, `bytes16`, `bytes32`
 
 `bytes[n]` are fixed length byte arrays, as opposed to `bytes` that are variable length byte arrays. The storage of `bytes[n]` in storage is such that it takes up a slot when it is of `bytes32` and is packed in cases of bytes below `32`. It is very similar to the `uint` type.
 
