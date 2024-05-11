@@ -61,7 +61,7 @@ contract Yul {
 }
 ```
 
-This will return `0xaabbccdd00000000000000000000000000000000000000000000000000000000`. You can find this by checking the Remix Console, expanding the transaction and checking the `decoded output` object.
+This will return `0xaabbccdd00000000000000000000000000000000000000000000000000000000`. You can find this by checking the Remix Console, expanding the transaction and checking the `decoded output` object. This is wrong, and will set the value of `a` to `0x00000000`.
 
 And a look at the final one.
 ```solidity

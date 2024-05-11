@@ -58,3 +58,5 @@ contract Yul {
     }
 }
 ```
+
+> 🚨 Yul does not recognize global variables, it only recognized local variables within functions, function parameters and named `return` variables.

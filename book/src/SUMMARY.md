@@ -31,3 +31,6 @@
   - [bytes1, bytes16, bytes32](4-yul-implementations/4-2-variable-storage-in-storage/4-2-2-bytes1-bytes16-bytes32.md)
   - [bytes](4-yul-implementations/4-2-variable-storage-in-storage/4-2-3-bytes.md)
   - [string](4-yul-implementations/4-2-variable-storage-in-storage/4-2-4-string.md)
+  - [address](4-yul-implementations/4-2-variable-storage-in-storage/4-2-5-address.md)
+  - [struct](4-yul-implementations/4-2-variable-storage-in-storage/4-2-6-struct.md)
+  - [mapping](4-yul-implementations/4-2-variable-storage-in-storage/4-2-7-mapping.md)
