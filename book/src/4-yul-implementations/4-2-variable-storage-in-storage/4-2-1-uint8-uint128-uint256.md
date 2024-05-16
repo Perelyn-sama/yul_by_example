@@ -1,9 +1,10 @@
 # `uint8`, `uint128`, `uint256`
 
-Unsigned integers are stored in memory based on the size of bytes they have. While sm all uint values like uint8 have 1 byte, uint256 has 32 bytes. Solidity's storage is designed in such a way that it can contain up to 32 bytes of value in one slot. In a situation where a variable doesn't contain up to 32 bytes, the value is stored and the next variable will be **packed** into the same slot, on the condition that when the bytes are added to the slot, it doesn't exceed 32 bytes.
+Unsigned integers are stored in memory based on the size of bytes they have. The size of `uint[n]` bytes can be realized by dividing `[n]` by 8, meaning that, while small `uint[n]` values like `uint8` have 1 byte, `uint256` has 32 bytes. Solidity's storage is designed in such a way that it can contain up to 32 bytes of value in one slot. In a situation where a variable doesn't contain up to 32 bytes, the value is stored and the next variable will be **packed** into the same slot, on the condition that when the bytes are added to the slot, it doesn't exceed 32 bytes.
 
 
-`uint256` => 32 bytes => Slot 0. <br>
+`uint256` => 32 bytes => Slot 0.
+
 This is the maximum, hence it occupies an entire slot of its own. Whatever bytes we are going to add will exceed 32 and hence, will pick up the next slot, slot 1.
 
 `uint128` => 16 bytes => Slot 1. We still have 16 bytes left to be filled. <br>
