@@ -62,11 +62,8 @@ more than enough to fit into the next slot, then, we can load the next storage l
 
 ## General `<type>[]` Deduction.
 
-Once the concept of type storages is understood, you can use that to figure out how the array versions of that type 
-will be stored.
+Once the concept of type storages is understood, you can use that to figure out how the array versions of that type will be stored.
 
-You can use the knowledge of arrays to write to any array index, or read from an array index.
+To retrieve an element from a packed array is quite tricky and is not readily advised.
 
-To retrieve an element from a packed array is quite trick and is not readily advised.
-
-> 🚨 The use of Yul to read and write arrays is not advised. It is a very tricky business.
+> 🚨 The use of Yul to read and write arrays is not advised. It is a very tricky business, considering the fact that small types are packed and large types occupy one slot, it is a whole new level of stress to take in packing, and other considerations while storing values into an array from Yul. Allow Solidity to handle the intricacies for you.
