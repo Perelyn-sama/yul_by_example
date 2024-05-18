@@ -1,4 +1,4 @@
-# `uint8[]`, `uint128[]`, `uint256[]`
+# Arrays
 
 ## General Array Storage
 
