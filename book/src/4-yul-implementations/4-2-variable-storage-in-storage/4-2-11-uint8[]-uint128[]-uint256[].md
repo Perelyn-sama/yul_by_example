@@ -1,5 +1,7 @@
 # `uint8[]`, `uint128[]`, `uint256[]`
 
+## General Array Storage
+
 Up till now, we've learnt about individual data types in Solidity and how they are stored in storage. Before we proceed to their array counterparts, we would want to go over how arrays are viewed in Solidity storage generally. This view is applied to all other types.
 
 Solidity recognizes two types of arrays, the fixed length array and the dynamic array. These two array types are 
