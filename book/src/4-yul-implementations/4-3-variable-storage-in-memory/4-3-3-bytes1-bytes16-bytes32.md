@@ -16,6 +16,7 @@ As you must've observed:
 
 - `bytes[n]` data declared inside a function body and then written to storage are right padded, `0x<value><00..00>`.
 - `bytes[n]` data declared as a function parameter and then written to memory are right padded, `0x<value><00..00>`.
+- `bytes[n]` data declared as a `constant` and then written to memory are right padded, `0x<value><00..00>`.
 
 ---
 
