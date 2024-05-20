@@ -29,6 +29,29 @@ contract Yul {
 }
 ```
 
+## `while` Loops
+
+To make the `for` loop act like a `while` loop, this is how we do it.
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity ^0.8.0;
+
+contract Yul {
+    function infiniteLoop() public pure returns (bytes32) {
+        assembly {
+            let x := 0
+            for { } lt(x, 10) { } {
+                x := add(x, 1)
+            }
+            
+            mstore(0x80, x)
+            return(0x80, 0x20)
+        }
+    }
+}
+```
+
 ## Infinite Loops
 
 To achieve the behaviour of an infinite loop, an approach to the `for` loop is used.
