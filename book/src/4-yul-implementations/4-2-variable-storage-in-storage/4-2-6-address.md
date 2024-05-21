@@ -1,5 +1,7 @@
 # `address`
 
+---
+
 `address` is a `bytes20` or `uint160` value, it holds 20 bytes of data. Since `address` take up 20 bytes of a 
 storage slot, they can be packed with any number of types that can sum up to 12 bytes.
 

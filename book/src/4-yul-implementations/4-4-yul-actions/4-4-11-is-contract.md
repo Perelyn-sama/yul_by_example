@@ -1,5 +1,7 @@
 # Is Contract
 
+---
+
 This is used to check if an address is the address of a smart contract or an EOA.
 
 ```solidity

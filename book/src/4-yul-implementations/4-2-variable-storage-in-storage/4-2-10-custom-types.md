@@ -1,5 +1,7 @@
 # Custom Types
 
+---
+
 A custom type or a user-defined value type allows you to create an alias of a native type in Solidity. This alias, will inherit and act as if it is the original type. It is defined by using the `type C is V syntax`, where `C` is the custom type, and `V` is the native type. To convert from the underlying type to the custom type, `C.wrap(<value>)` is used, and to convert from the custom type to the native underlying type, `C.unwrap(<value>)` is used [[5](https://docs.soliditylang.org/en/latest/types.html#user-defined-value-types)].
 
 Custom types behave like their underlying types.

@@ -1,5 +1,7 @@
 # Ether Balance
 
+---
+
 This is how you check the Ether balance of an address on any EVM chain.
 
 ```solidity

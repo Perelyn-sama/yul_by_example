@@ -1,5 +1,7 @@
 # Loops
 
+---
+
 Yul only has `for` loops. There exists no `while` loops in Yul.
 
 ## `for` Loops

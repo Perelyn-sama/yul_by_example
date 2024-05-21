@@ -1,5 +1,7 @@
 # Arrays
 
+---
+
 ## Fixed Arrays, `<type>[n]`
 
 The storage of fixed arrays in memory is simply a concatenation of the storage of its individual elements.

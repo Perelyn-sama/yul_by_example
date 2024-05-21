@@ -1,5 +1,7 @@
 # `struct`
 
+---
+
 Struct in memory is stored the using the same three-step method.
 
 1. The pointer.

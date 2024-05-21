@@ -1,5 +1,7 @@
 # Send Ether
 
+---
+
 Sends a specified `msg.value` to an address using `call()`.
 
 ```solidity

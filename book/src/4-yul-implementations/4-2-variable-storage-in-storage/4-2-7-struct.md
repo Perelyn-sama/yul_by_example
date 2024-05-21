@@ -1,5 +1,7 @@
 # `struct`
 
+---
+
 A `struct` is a group of data. The layout of a `struct` is identical to the layout of the data within a `struct`. The slots a `struct` would occupy is dependent on the types of variables within the struct. A struct with two uint256 types would occupy two slots.
 
 ```solidity

@@ -1,5 +1,7 @@
 # Conditionals
 
+---
+
 These involve `if` and `switch` statements.
 
 > There are no `else` statements in Yul.

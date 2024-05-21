@@ -1,5 +1,7 @@
 # Functions
 
+---
+
 Functions are declared by the `function` keyword. And they are of two types, functions with return values and those without.
 
 ## Functions without a return value.

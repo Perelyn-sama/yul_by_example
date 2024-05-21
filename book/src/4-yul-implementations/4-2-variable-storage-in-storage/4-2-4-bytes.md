@@ -1,5 +1,7 @@
 # `bytes`
 
+---
+
 `bytes` are dynamic byte arrays. While the length of a `bytes[n]` is known as `n`, bytes do not have a specific 
 length and can stretch up to `128` or even more.
 

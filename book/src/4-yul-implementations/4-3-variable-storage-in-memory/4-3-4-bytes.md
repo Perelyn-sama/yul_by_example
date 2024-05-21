@@ -1,5 +1,7 @@
 # `bytes`
 
+---
+
 The storage of `bytes` in memory is very tricky. Normally, declaring a `bytes` variable in memory will be followed by the `memory` keyword as in `bytes memory <variableName>` this is because, `bytes` values are encoded in memory. The encoding has three parts.
 
 1. The pointer.

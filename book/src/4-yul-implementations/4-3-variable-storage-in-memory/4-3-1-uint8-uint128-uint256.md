@@ -1,5 +1,7 @@
 # `uint8`, `uint128`, `uint256`
 
+---
+
 The storage of `uint8`, `uint128`, `uint256` in memory are very simple, they are written directly at our chosen 
 memory location and are returned the same.
 

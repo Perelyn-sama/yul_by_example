@@ -1,5 +1,7 @@
 # `string`
 
+---
+
 `string` is first converted into its `bytes` type by converting each individual ASCII character to its hexadecimal 
 value. It is then stored in the exact way `bytes` are stored.
 

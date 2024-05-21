@@ -1,5 +1,7 @@
 # Sources And References
 
+---
+
 1. Yul ([https://docs.soliditylang.org/en/latest/yul.html#yul](https://docs.soliditylang.org/en/latest/yul.html#yul)).
 2. What is Yul? ([https://www.quicknode.com/guides/ethereum-development/smart-contracts/what-is-yul#what-is-yul](https://www.quicknode.com/guides/ethereum-development/smart-contracts/what-is-yul#what-is-yul)).
 3. Solidity Docs - Layout In Memory ([https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html](https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html)).

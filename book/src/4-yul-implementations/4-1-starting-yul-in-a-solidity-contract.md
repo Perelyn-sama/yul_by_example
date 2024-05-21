@@ -1,5 +1,7 @@
 # Starting Yul In A Solidity Contract
 
+---
+
 Yul, as you know by now, is written inside Solidity functions. To start off a Yul code in a Solidity function, you simply declare the `assembly` keyword, followed by curly braces. Your Yul (Inline Assembly) code can then come inside the curly braces.
 
 ```solidity

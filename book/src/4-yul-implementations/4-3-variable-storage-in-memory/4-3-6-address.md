@@ -1,5 +1,7 @@
 # `address`
 
+---
+
 The storage of `address` in memory are very simple, they are written directly at our chosen memory location and are returned the same.
 
 ```solidity

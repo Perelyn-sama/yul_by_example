@@ -1,5 +1,7 @@
 # `bytes1`, `bytes16`, `bytes32`
 
+---
+
 The storage of `bytes1`, `bytes16`, `bytes32` in memory are quite different, they are right-padded to 32 bytes if they're not up to 32 bytes, and then,  they are written directly at our chosen memory location and are returned with the padding.
 
 ## Padding?

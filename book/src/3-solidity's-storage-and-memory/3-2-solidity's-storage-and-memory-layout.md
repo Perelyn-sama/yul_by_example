@@ -1,5 +1,7 @@
 # Solidity's Storage And Memory Layout
 
+---
+
 We have understood what the storage and memory are. Persistent and temporary, respectively. Now we are going to take a look at how these two data storage locations are laid out.
 
 ### Storage

@@ -1,5 +1,7 @@
 # `mapping`
 
+---
+
 A typical `mapping` in Solidity is accessed using the `key`. There are two types of `mapping` as you know, single 
 `mapping` and nested `mapping`. We will look at how to retrieve data from a single and a nested `mapping`.
 

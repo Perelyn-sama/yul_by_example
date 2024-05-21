@@ -1,5 +1,7 @@
 # Yul Actions
 
+---
+
 In this section of the book, we will take a look at how to do basic stuff in Yul. From basic things like addition to loops, to hashing, checking of balances and even signature verification.
 
 Feel free to recreate or rerun the codes written here on Remix.

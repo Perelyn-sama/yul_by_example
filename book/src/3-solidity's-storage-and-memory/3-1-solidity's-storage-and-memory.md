@@ -1,5 +1,7 @@
 # Solidity's Storage And Memory
 
+---
+
 Solidity offers us two locations for data storage:
 - Storage
 - Memory

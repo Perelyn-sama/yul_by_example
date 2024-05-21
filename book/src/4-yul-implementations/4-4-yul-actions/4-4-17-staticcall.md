@@ -1,5 +1,7 @@
 # `staticcall`
 
+---
+
 The difference between `staticcall` and `delegatecall` is that `staticcall` makes calls to only `view` or `pure` functions.
 
 ```solidity

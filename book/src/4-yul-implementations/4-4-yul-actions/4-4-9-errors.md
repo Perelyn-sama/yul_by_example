@@ -1,5 +1,7 @@
 # Errors
 
+---
+
 Errors are encoded using the ABI Specification. We will take a look at basic reverts, reverts of errors without 
 parameters and errors with parameters.
 

@@ -1,5 +1,7 @@
 # Custom Types
 
+---
+
 Custom types behave like their underlying types.
 
 ```solidity

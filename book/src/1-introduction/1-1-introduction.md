@@ -1,4 +1,4 @@
-# Introduction _(What is this book about?)_
+# Introduction
 
 ---
 

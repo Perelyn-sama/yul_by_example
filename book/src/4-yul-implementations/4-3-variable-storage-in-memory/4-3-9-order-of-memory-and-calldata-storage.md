@@ -1,5 +1,7 @@
 # Order Of Memory And `Calldata` Storage
 
+---
+
 In a situation where we have a group of types to be stored in memory or `calldata`, say a function like this:
 
 ```solidity

@@ -1,5 +1,7 @@
 # Bitwise
 
+---
+
 Bitwise operations involve `left shift`, `right shift`, `and`, `or`, `xor` and `not`.
 
 ## Left Shift, `shl(a, b)`

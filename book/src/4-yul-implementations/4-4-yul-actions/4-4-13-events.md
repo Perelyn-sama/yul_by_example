@@ -1,5 +1,7 @@
 # Events
 
+---
+
 Events are classified as logs on the blockchain. It ranges from [`log0`](https://www.evm.codes/#a0?fork=cancun) to [`log4`](https://www.evm.codes/#a4?fork=cancun).
 
 ## `log[n]`
