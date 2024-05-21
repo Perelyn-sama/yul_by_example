@@ -31,7 +31,7 @@ contract Yul {
 
 ## `while` Loops
 
-To make the `for` loop act like a `while` loop, this is how we do it.
+To make a `for` loop act like a `while` loop, this is how we do it.
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
