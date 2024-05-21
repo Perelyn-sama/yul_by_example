@@ -37,7 +37,7 @@ contract Yul {
 
 The above will return `0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffedcba988` showing a wrap around.
 
-To write a Yul multiplication code to check for overflows and prevent them, this will be the approach to use [[8]](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol).
+To write a Yul multiplication code to check for overflows and prevent them, this will be the approach to use [[6](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol)].
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0

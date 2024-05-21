@@ -4,8 +4,8 @@ Variables declared inside a function's body, or returned by a function are store
 
 When a value is stored in memory, Solidity automatically stores the highest variant of its type in memory. Meaning that storing a data of type `uint8` will store a `uint256` type of the same number in memory, occupying an entire 32-byte memory space.
 
-Data in the memory and `calldata` are stored according to the standard ABI specification [[7](https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html#)], **and they are not packed**.
+Data in the memory and `calldata` are stored according to the standard ABI specification [[3](https://docs.soliditylang.org/en/latest/internals/layout_in_memory.html#)], **and they are not packed**.
 
 In this section, we will take a look at the different ways data types are stored in memory.
 
-Head into the start of the section at []().
+Head into the start of the section at [`uint8`, `uint128`, `uint256`](4-3-1-uint8-uint128-uint256.md).

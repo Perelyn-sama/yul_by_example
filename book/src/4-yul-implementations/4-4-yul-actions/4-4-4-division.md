@@ -16,7 +16,7 @@ contract Yul {
 
 The `div(a, b)` Yul command takes in two numbers as arguments and returns their quotient, `a / b`.
 
-To write a Yul divion code to check for zero divisions and prevent them, this will be the approach to use [[8]](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol).
+To write a Yul divion code to check for zero divisions and prevent them, this will be the approach to use [[6](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol)].
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0

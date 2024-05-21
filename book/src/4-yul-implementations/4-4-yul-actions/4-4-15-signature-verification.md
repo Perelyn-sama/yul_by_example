@@ -1,6 +1,6 @@
 # Signature Verification
 
-Source: [Verifying Signature](https://solidity-by-example.org/signature/), [solidity-by-example.org](https://solidity-by-example.org).
+Source: [Verifying Signature](https://solidity-by-example.org/signature/), [solidity-by-example.org](https://solidity-by-example.org) [[7](https://solidity-by-example.org/signature/)].
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0

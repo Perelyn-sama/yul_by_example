@@ -35,7 +35,7 @@ contract Yul {
 
 The above function will return `0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe`.
 
-To write a safe Yul subtraction code, this is the best approach [[8]](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol).
+To write a safe Yul subtraction code, this is the best approach [[6](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol)].
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0

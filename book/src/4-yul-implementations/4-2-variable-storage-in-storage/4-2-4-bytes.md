@@ -107,7 +107,7 @@ The length data is stored at the slot, and, unlike `bytes` with lengths of 31 an
 with lengths of 32 and above is calculated as `(length * 2) + 1`. This value is stored at the corresponding slot for 
 the `bytes` variable. And the value for the `bytes` is then stored at `keccak256(slot)`. If we are to store a bytes 
 variable with length 32 and a value at slot 0, slot 0 would hold the value of 65 ((32 * 2) + 1) while the actual 
-`bytes` value will be stored at `keccak256(0)`. The keccak256 has is calculated using Yul, and not Solidity [[5](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html#bytes-and-string)].
+`bytes` value will be stored at `keccak256(0)`. The keccak256 has is calculated using Yul, and not Solidity [[4](https://docs.soliditylang.org/en/latest/internals/layout_in_storage.html#bytes-and-string)].
 
 If the length of the `bytes` value exceed 32, they overflow in to the next storage slots. Meaning that, if we have a 
 bytes with a length of 40, corresponding to slot 0, the value would be found at `keccak256(0)`, but, we would only see 

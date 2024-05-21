@@ -65,3 +65,16 @@
   - [Events](4-yul-implementations/4-4-yul-actions/4-4-13-events.md)
   - [Send Ether](4-yul-implementations/4-4-yul-actions/4-4-14-send-ether.md)
   - [Signature Verification](4-yul-implementations/4-4-yul-actions/4-4-15-signature-verification.md)
+  - [call](4-yul-implementations/4-4-yul-actions/4-4-16-call.md)
+  - [staticcall](4-yul-implementations/4-4-yul-actions/4-4-17-staticcall.md)
+  - [delegatecall](4-yul-implementations/4-4-yul-actions/4-4-18-delegatecall.md)
+
+---
+
+# Projects
+- [Projects](5-projects/5-0-projects.md)
+
+---
+
+# Sources And References
+- [Sources And References](6-sources-and-references/6-0-sources-and-references.md)
