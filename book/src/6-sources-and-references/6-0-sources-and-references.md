@@ -9,3 +9,7 @@
 5. Solidity Docs - User Defined Value Types ([https://docs.soliditylang.org/en/latest/types.html#user-defined-value-types](https://docs.soliditylang.org/en/latest/types.html#user-defined-value-types)).
 6. OpenZeppelin Safe Math ([https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol](https://github.com/ConsenSysMesh/openzeppelin-solidity/blob/master/contracts/math/SafeMath.sol)).
 7. Solidity By Example ([https://solidity-by-example.org/signature/](https://solidity-by-example.org/signature/)).
+
+<br><br><br>
+
+Christ is King!
