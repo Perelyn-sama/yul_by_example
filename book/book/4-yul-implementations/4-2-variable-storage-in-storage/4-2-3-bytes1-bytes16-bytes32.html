@@ -250,6 +250,7 @@ contract Yul {
 </code></pre>
 <p>This will return <code>0x00000000000000000000000000000000000000000000000000000000aabbccdd</code>.</p>
 <p>Setting a <code>bytes[n]</code> variable in a function will right-pad it to 32 bytes. Whereas, directly assigning the variable in a Yul block or in storage will handle it normally by left padding it.</p>
+<p>To get a knowledge of which type of <code>bytes[n]</code> does what, refer to <a href="../4-3-variable-storage-in-memory/4-3-3-bytes1-bytes16-bytes32.html#padding">this part of the book</a>.</p>
 <h3 id="bytes16"><a class="header" href="#bytes16">bytes16</a></h3>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;

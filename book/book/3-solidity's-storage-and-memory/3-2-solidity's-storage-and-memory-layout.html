@@ -177,7 +177,7 @@
 <hr />
 <p>We have understood what the storage and memory are. Persistent and temporary, respectively. Now we are going to take a look at how these two data storage locations are laid out.</p>
 <h3 id="storage"><a class="header" href="#storage">Storage</a></h3>
-<p>Solidity's storage layout has a finite amount of space, which is broken down into 32-byte groups called <code>slots</code>, and each slot can hold a 256-bit value. These slots start from index 0 and can stretch to a theoretical index limit of somewhere around <code>(2^256) - 1</code>. It is safe to say that the storage can never get full. Cool, isn't it?</p>
+<p>Solidity's storage layout has a finite amount of space, which is broken down into 32-byte groups called <code>slots</code>, and each slot can hold a 256-bit value. These slots start from index 0 and can stretch to an index limit of <code>(2^256) - 1</code>. It is safe to say that the storage can never get full. Cool, isn't it?</p>
 <p>Values stored in storage slots are stored as <code>bytes32</code> values, and sometimes, can be packed, as we will see later on in this book. To retrieve the value of a Solidity storage variable, the 32-byte value stored in the corresponding slot is retrieved. In some cases - when the value in the slot has been packed -, the value retrieved is worked on by methods of shifting or masking to retrieve the desired value.</p>
 <blockquote>
 <p>💡 Remember when we said one should know how the EVM works before moving on with Yul? Yeah, that's one of the reasons why. You cannot retrieve what you do not know how it was stored.</p>
@@ -185,7 +185,7 @@
 <h3 id="memory"><a class="header" href="#memory">Memory</a></h3>
 <p>Solidity's memory layout, unlike the storage layout is quite tricky. While the storage has a defined maximum slot
 index of
-<code>(2 **256) - 1</code> that can hold 32-byte values, the memory is a large group of 32-byte slots that their data can not
+<code>(2^256) - 1</code> that can hold 32-byte values, the memory is a large group of 32-byte slots that their data can not
 be retrieved by passing a slot index. But instead, data stored in the memory are retrieved by picking
 a particular location and returning a specific number of bytes from that point in the memory.</p>
 <p>"Why?", you may ask, it is because the default number of bytes returned from any point in memory is <code>32</code> and in
@@ -193,7 +193,7 @@ cases where the point started from is the middle of a particular 32-byte slot, i
 <p>You can imagine memory slots as laid out end to end, in a way that data retrieval can be started from any point and
 stopped at any point. Unlike storage that returns only the 32-bytes stored at an index, nothing more, nothing less.</p>
 <p>If you do not understand that, do not
-sweat it. You will get a better grasp of it when we talk about <a href="">variable storage in memory</a>.</p>
+sweat it. You will get a better grasp of it when we talk about <a href="../4-yul-implementations/4-3-variable-storage-in-memory/4-3-0-variable-storage-in-memory.html">variable storage in memory</a> section.</p>
 <p>These positions in memory start from <code>0x00</code> and are in groups of 32-bytes, meaning that the slots are in th is way:</p>
 <p><code>0x00</code> - <code>0x1f</code> <br>
 <code>0x20</code> - <code>0x3f</code> <br>
@@ -216,9 +216,8 @@ for dynamic memory arrays and should never be written to (the free memory pointe
 storing in a memory location with existing data overwrites that location.</p>
 </blockquote>
 <blockquote>
-<p>💡 The positions we will use over the course of this book to access memory points will be written in hexadecimals
-(<code>0x**</code>)
-as it's easier to read, since the EVM already deals in hexadecimals.</p>
+<p>💡 The positions and values in memory that we will use over the course of this book to access memory points will be written in hexadecimals
+(<code>0x**</code>) as they are easier to read, since the EVM already deals in hexadecimals.</p>
 </blockquote>
 
                     </main>

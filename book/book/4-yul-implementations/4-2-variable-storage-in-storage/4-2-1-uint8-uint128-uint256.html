@@ -222,7 +222,7 @@ contract Yul {
 <blockquote>
 <p><code>return(position, size)</code></p>
 </blockquote>
-<p>If we called the <code>getUint8</code> function to return a <code>uint8</code>, Solidity will handle the conversion for us and we will see <code>16</code> returned. However, we will be returning in bytes32 over the course of this book to understand the actual storage and memory layouts of the EVM.</p>
+<p>If we called the <code>getUint8</code> function to return a <code>uint8</code>, Solidity will handle the conversion for us and we will see <code>16</code> returned. However, we will be returning in <code>bytes32</code> over the course of this book to understand the actual storage and memory layouts of the EVM.</p>
 <p>Calling the <code>getUint8</code> function will return <code>0x0000000000000000000000000000000000000000000000000000000000000010</code>, which when converted to decimal, equals to <code>16</code>, the value we stored.</p>
 <p>To get a glimpse of Solidity doing the automatic conversion of <code>bytes32</code> to <code>uint8</code>, we can rewrite the code to this:</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0

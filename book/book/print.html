@@ -179,7 +179,7 @@
 <p>Hello there!</p>
 <p>This is a book about Yul, a low-level, intermediate language written alongside Solidity that can be compiled to bytecode for different backends [<a href="https://docs.soliditylang.org/en/latest/yul.html#yul">1</a>].</p>
 <p>Over the course of this book, we are going to go through what Yul is, why it is important, its advantage and disadvantage over Solidity and its implementations in a smart contract.</p>
-<p>Also, we will see how storage and memory are laid out in Solidity and how we would harness the power of Yul to infiltrate and modify to our taste.</p>
+<p>Also, we will see how storage and memory are laid out in Solidity and how we would harness the power of Yul to infiltrate and modify these to our taste.</p>
 <p>Enjoy!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="what-is-yul"><a class="header" href="#what-is-yul">What Is Yul?</a></h1>
 <hr />
@@ -187,17 +187,17 @@
 low-level language that gives developers a high degree of control over the execution of their smart contracts. It is
 similar in many ways to Assembly but with higher-level features that make it easier to work with [<a href="https://www.quicknode.com/guides/ethereum-development/smart-contracts/what-is-yul#what-is-yul">2</a>].</p>
 <p>Yul was previously called <strong>Julia</strong> or <strong>Iulia</strong>.</p>
-<p>Within the context of smart contract development, Yul is usually referred to as <strong>Inline Assembly</strong>. As it is very
+<p>Within the context of smart contract development, Yul is usually referred to as <strong>Inline Assembly</strong>, as it is very
 similar to Assembly and is written within functions in smart contract code.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="why-is-yul-important"><a class="header" href="#why-is-yul-important">Why Is Yul Important?</a></h1>
 <hr />
-<p>During smart contract development process, there are actions, or manipulations which are not feasible for the
+<p>During the smart contract development process, there are actions, or manipulations which are not feasible for the
 programmer from the high-level Solidity code. Using Yul, the programmer is given much more fine-grained control over
-the storage, memory and in some cases calldata layout of the EVM. This control also allows for much more gas efficient code to be written.</p>
+the storage, memory and in some cases <code>calldata</code> layout of the EVM. This control also allows for much more gas efficient code to be written.</p>
 <p>The flexibility and gas optimization of Yul are what makes it important.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="yuls-advantage"><a class="header" href="#yuls-advantage">Yul's Advantage</a></h1>
 <hr />
-<p>As stated in the <a href="1-introduction/1-3-why-is-yul-important.html">previous chapter</a>, the ability to manipulate the storage, memory or calldata layout to the programmer's taste with an extra benefit of much more gas optimized code is Yul's major advantage over Solidity.</p>
+<p>As stated in the <a href="1-introduction/1-3-why-is-yul-important.html">previous chapter</a>, the ability to manipulate the storage, memory or <code>calldata</code> layout to the programmer's taste with an extra benefit of much more gas optimized code is Yul's major advantage over high-level Solidity.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="yuls-disadvantage"><a class="header" href="#yuls-disadvantage">Yul's Disadvantage</a></h1>
 <hr />
 <p>As with everything without control limits, the wrong modification, setting or manipulation of the storage or memory layout has the potential of breaching the security of the smart contract, rendering it useless till eternity, or putting users' funds at risk.</p>
@@ -206,7 +206,7 @@ the storage, memory and in some cases calldata layout of the EVM. This control a
 <hr />
 <p>Every piece of Yul code written here can be rerun on <a href="https://remix.ethereum.org/">Remix</a>.</p>
 <p>Remix is an online smart contract development suite. It also offers a way of observing the process of EVM layouts and storage. It will be used over the course of this book, and you can replicate whatever we have done here on the suite.</p>
-<p>It is also recommended that you keep <a href="https://evm.codes">evm.codes</a> handy over your course of learning and practising Yul, and even after you've understood. It is a magnificent resource.</p>
+<p>It is also recommended that you keep <a href="https://evm.codes">evm.codes</a> handy over your course of learning and practising Yul, and even after you've understood the language. It is a magnificent resource.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="authors"><a class="header" href="#authors">Authors</a></h1>
 <hr />
 <ul>
@@ -234,7 +234,7 @@ the storage, memory and in some cases calldata layout of the EVM. This control a
 <hr />
 <p>We have understood what the storage and memory are. Persistent and temporary, respectively. Now we are going to take a look at how these two data storage locations are laid out.</p>
 <h3 id="storage"><a class="header" href="#storage">Storage</a></h3>
-<p>Solidity's storage layout has a finite amount of space, which is broken down into 32-byte groups called <code>slots</code>, and each slot can hold a 256-bit value. These slots start from index 0 and can stretch to a theoretical index limit of somewhere around <code>(2^256) - 1</code>. It is safe to say that the storage can never get full. Cool, isn't it?</p>
+<p>Solidity's storage layout has a finite amount of space, which is broken down into 32-byte groups called <code>slots</code>, and each slot can hold a 256-bit value. These slots start from index 0 and can stretch to an index limit of <code>(2^256) - 1</code>. It is safe to say that the storage can never get full. Cool, isn't it?</p>
 <p>Values stored in storage slots are stored as <code>bytes32</code> values, and sometimes, can be packed, as we will see later on in this book. To retrieve the value of a Solidity storage variable, the 32-byte value stored in the corresponding slot is retrieved. In some cases - when the value in the slot has been packed -, the value retrieved is worked on by methods of shifting or masking to retrieve the desired value.</p>
 <blockquote>
 <p>💡 Remember when we said one should know how the EVM works before moving on with Yul? Yeah, that's one of the reasons why. You cannot retrieve what you do not know how it was stored.</p>
@@ -242,7 +242,7 @@ the storage, memory and in some cases calldata layout of the EVM. This control a
 <h3 id="memory"><a class="header" href="#memory">Memory</a></h3>
 <p>Solidity's memory layout, unlike the storage layout is quite tricky. While the storage has a defined maximum slot
 index of
-<code>(2 **256) - 1</code> that can hold 32-byte values, the memory is a large group of 32-byte slots that their data can not
+<code>(2^256) - 1</code> that can hold 32-byte values, the memory is a large group of 32-byte slots that their data can not
 be retrieved by passing a slot index. But instead, data stored in the memory are retrieved by picking
 a particular location and returning a specific number of bytes from that point in the memory.</p>
 <p>"Why?", you may ask, it is because the default number of bytes returned from any point in memory is <code>32</code> and in
@@ -250,7 +250,7 @@ cases where the point started from is the middle of a particular 32-byte slot, i
 <p>You can imagine memory slots as laid out end to end, in a way that data retrieval can be started from any point and
 stopped at any point. Unlike storage that returns only the 32-bytes stored at an index, nothing more, nothing less.</p>
 <p>If you do not understand that, do not
-sweat it. You will get a better grasp of it when we talk about <a href="3-solidity&#x27;s-storage-and-memory/">variable storage in memory</a>.</p>
+sweat it. You will get a better grasp of it when we talk about <a href="3-solidity&#x27;s-storage-and-memory/../4-yul-implementations/4-3-variable-storage-in-memory/4-3-0-variable-storage-in-memory.html">variable storage in memory</a> section.</p>
 <p>These positions in memory start from <code>0x00</code> and are in groups of 32-bytes, meaning that the slots are in th is way:</p>
 <p><code>0x00</code> - <code>0x1f</code> <br>
 <code>0x20</code> - <code>0x3f</code> <br>
@@ -273,9 +273,8 @@ for dynamic memory arrays and should never be written to (the free memory pointe
 storing in a memory location with existing data overwrites that location.</p>
 </blockquote>
 <blockquote>
-<p>💡 The positions we will use over the course of this book to access memory points will be written in hexadecimals
-(<code>0x**</code>)
-as it's easier to read, since the EVM already deals in hexadecimals.</p>
+<p>💡 The positions and values in memory that we will use over the course of this book to access memory points will be written in hexadecimals
+(<code>0x**</code>) as they are easier to read, since the EVM already deals in hexadecimals.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="using-yul-to-read-and-write-directly-to-storage-and-memory"><a class="header" href="#using-yul-to-read-and-write-directly-to-storage-and-memory">Using Yul To Read And Write Directly To Storage And Memory</a></h1>
 <hr />
@@ -338,11 +337,11 @@ contract Yul {
 }
 </code></pre>
 <blockquote>
-<p>🚨 Yul does not recognize global variables, it only recognized local variables within functions, function parameters and named <code>return</code> variables.</p>
+<p>🚨 Yul does not recognize Solidity global or state variables, it only recognized local variables within functions, function parameters and named <code>return</code> variables.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="variable-storage-in-storage"><a class="header" href="#variable-storage-in-storage">Variable Storage In Storage</a></h1>
 <hr />
-<p>Solidity stores variables declared globally in storage. The storage is made up of slots, as we've discussed earlier. In this section we will look at how different data types are stored in Solidity's storage. Some are packed and some are greedy enough to take up a full slot without sharing.</p>
+<p>Solidity stores variables declared globally, otherwise known as state variables in storage. The storage is made up of slots, as we have discussed earlier. In this section we will look at how different data types are stored in Solidity's storage. Some are packed and some are greedy enough to take up a full slot without sharing.</p>
 <p>You can head into the start of the section at <a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-1-uint8-uint128-uint256.html">uint8, uint128, uint256</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="uint8-uint128-uint256"><a class="header" href="#uint8-uint128-uint256"><code>uint8</code>, <code>uint128</code>, <code>uint256</code></a></h1>
 <hr />
@@ -393,7 +392,7 @@ contract Yul {
 <blockquote>
 <p><code>return(position, size)</code></p>
 </blockquote>
-<p>If we called the <code>getUint8</code> function to return a <code>uint8</code>, Solidity will handle the conversion for us and we will see <code>16</code> returned. However, we will be returning in bytes32 over the course of this book to understand the actual storage and memory layouts of the EVM.</p>
+<p>If we called the <code>getUint8</code> function to return a <code>uint8</code>, Solidity will handle the conversion for us and we will see <code>16</code> returned. However, we will be returning in <code>bytes32</code> over the course of this book to understand the actual storage and memory layouts of the EVM.</p>
 <p>Calling the <code>getUint8</code> function will return <code>0x0000000000000000000000000000000000000000000000000000000000000010</code>, which when converted to decimal, equals to <code>16</code>, the value we stored.</p>
 <p>To get a glimpse of Solidity doing the automatic conversion of <code>bytes32</code> to <code>uint8</code>, we can rewrite the code to this:</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
@@ -546,7 +545,7 @@ contract Yul {
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="int8-int128-int256"><a class="header" href="#int8-int128-int256"><code>int8</code>, <code>int128</code>, <code>int256</code></a></h1>
 <hr />
-<p>While <code>uint[n]</code> types can only contain positive integers, the <code>int[n]</code> types can contain both positive and negative numbers. As you know, <code>int[n]</code> variables store numbers ranging from <code>-1 -&gt; -(2 ^ (n-1))</code> on the negative side, and <code>0 -&gt; (2^n) - 1</code> on the positive side. This means that for the three <code>int[n]</code> types specified above, this would be their minimum and maximum values.</p>
+<p>While <code>uint[n]</code> types can only contain positive integers, the <code>int[n]</code> types can contain both positive and negative numbers. As you know, <code>int[n]</code> variables store numbers ranging from <code>-1 -&gt; -(2 ^ (n-1))</code> on the negative side, and <code>0 -&gt; ((2^n) - 1)</code> on the positive side. This means that for the three <code>int[n]</code> types specified above, this would be their minimum and maximum values.</p>
 <div class="table-wrapper"><table><thead><tr><th><strong><code>int[n]</code> type</strong></th><th><strong>Minimum Value</strong></th><th><strong>Maximum Value</strong></th></tr></thead><tbody>
 <tr><td><code>int8</code></td><td>-128</td><td>127</td></tr>
 <tr><td><code>int128</code></td><td>-2^127</td><td>(2^127) - 1</td></tr>
@@ -661,6 +660,7 @@ contract Yul {
 </code></pre>
 <p>This will return <code>0x00000000000000000000000000000000000000000000000000000000aabbccdd</code>.</p>
 <p>Setting a <code>bytes[n]</code> variable in a function will right-pad it to 32 bytes. Whereas, directly assigning the variable in a Yul block or in storage will handle it normally by left padding it.</p>
+<p>To get a knowledge of which type of <code>bytes[n]</code> does what, refer to <a href="4-yul-implementations/4-2-variable-storage-in-storage/../4-3-variable-storage-in-memory/4-3-3-bytes1-bytes16-bytes32.html#padding">this part of the book</a>.</p>
 <h3 id="bytes16"><a class="header" href="#bytes16">bytes16</a></h3>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
@@ -799,7 +799,6 @@ bytes with a length of 40, corresponding to slot 0, the value would be found at 
 32 bytes of the entire thing, while the remaining 8 bytes would be in the next slot, <code>keccak256(0) + 1</code></p>
 <p>We're going to store a pretty long <code>bytes</code> value now.</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
-// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
 contract MyContract {
@@ -858,7 +857,7 @@ the first 32 bytes of the value we stored, while, <code>getSecondBytesSection</c
 it only contains values for the first 8 bytes. Using both data, we can see that our <code>bytes</code> value was spread out
 across two storage slots. We can try to concatenate them and return all the bytes, but that would involve moving
 them into memory, and then returning the proper ABI encoded memory data for the <code>bytes</code>. We would look at that when
-we get to the <a href="4-yul-implementations/4-2-variable-storage-in-storage/">Variable Storage In Memory</a> section of this book.</p>
+we get to the <a href="4-yul-implementations/4-2-variable-storage-in-storage/../4-3-variable-storage-in-memory/4-3-0-variable-storage-in-memory.html">Variable Storage In Memory</a> section of this book.</p>
 <blockquote>
 <p>💡 <code>bytes</code> and <code>string</code> share the same characteristics in storage and memory. The same way <code>bytes</code> are stored in
 storage and memory, that is the same way <code>string</code> are stored. The only differences are that each <code>string</code> character is
@@ -900,7 +899,7 @@ contract Yul {
 <p>To understand how <code>address</code>, <code>bytes20</code> and <code>uint160</code> types co-relate, read up <a href="https://docs.soliditylang.org/en/latest/types.html#address">this section</a> from the Solidity documentation.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="struct"><a class="header" href="#struct"><code>struct</code></a></h1>
 <hr />
-<p>A <code>struct</code> is a group of data. The layout of a <code>struct</code> is identical to the layout of the data within a <code>struct</code>. The slots a <code>struct</code> would occupy is dependent on the types of variables within the struct. A struct with two uint256 types would occupy two slots.</p>
+<p>A <code>struct</code> is a group of data. The layout of a <code>struct</code> is identical to the layout of the data within a <code>struct</code>. The slots a <code>struct</code> would occupy is dependent on the types of variables within the struct. A struct with two <code>uint256</code> types would occupy two slots.</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
@@ -1675,7 +1674,7 @@ contract Yul {
     }
 }
 </code></pre>
-<p><code>and(a, b)</code> is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running <code>a &amp;&amp; b</code>.</p>
+<p><code>and(a, b)</code> is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running <code>a &amp; b</code>.</p>
 <h2 id="or-ora-b"><a class="header" href="#or-ora-b">Or, <code>or(a, b)</code></a></h2>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
@@ -1689,7 +1688,7 @@ contract Yul {
     }
 }
 </code></pre>
-<p><code>or(a, b)</code> is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running <code>a || b</code>.</p>
+<p><code>or(a, b)</code> is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running <code>a | b</code>.</p>
 <h2 id="xor-xora-b"><a class="header" href="#xor-xora-b">Xor, <code>xor(a, b)</code></a></h2>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
@@ -1834,7 +1833,7 @@ contract Yul {
 pragma solidity ^0.8.0;
 
 contract Yul {
-    function infiniteLoop() public pure returns (bytes32) {
+    function whileLoop() public pure returns (bytes32) {
         assembly {
             let x := 0
             for { } lt(x, 10) { } {
@@ -2232,7 +2231,7 @@ contract CallerContract {
 <p><code>callvalue()</code> is used to retrieve <code>msg.value</code> in Yul.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="staticcall"><a class="header" href="#staticcall"><code>staticcall</code></a></h1>
 <hr />
-<p>The difference between <code>staticcall</code> and <code>delegatecall</code> is that <code>staticcall</code> makes calls to only <code>view</code> or <code>pure</code> functions.</p>
+<p>The difference between <code>staticcall</code> and <code>delegatecall</code> is that <code>staticcall</code> makes calls to only <code>view</code> or <code>pure</code> functions. A <code>staticcall</code> will revert if it makes a call to a function in a smart contract that changes the state of that smart contract.</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
@@ -2398,7 +2397,7 @@ contract CallerContract {
 <p><code>returndatasize()</code> returns the size of the data returned from a function call.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="delegatecall"><a class="header" href="#delegatecall"><code>delegatecall</code></a></h1>
 <hr />
-<p><code>delegatecall(a, b, d, e, f, g)</code> functions exactly the way <code>delegatecall()</code> functions in Solidity. It takes the same arguments <code>call</code> takes except the <code>msg.value</code>.</p>
+<p><code>delegatecall(a, b, d, e, f, g)</code> functions exactly the way <code>staticcall()</code> functions in Solidity. It takes the same arguments <code>call</code> takes except the <code>msg.value</code>.</p>
 <p>It is called exactly the same way <a href="4-yul-implementations/4-4-yul-actions/4-4-17-staticcall.html"><code>staticcall</code></a> is called, with the same arguments, and returns the same value as well.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="projects"><a class="header" href="#projects">Projects</a></h1>
 <hr />

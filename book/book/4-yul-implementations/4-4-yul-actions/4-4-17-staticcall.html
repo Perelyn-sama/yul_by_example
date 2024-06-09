@@ -175,7 +175,7 @@
                     <main>
                         <h1 id="staticcall"><a class="header" href="#staticcall"><code>staticcall</code></a></h1>
 <hr />
-<p>The difference between <code>staticcall</code> and <code>delegatecall</code> is that <code>staticcall</code> makes calls to only <code>view</code> or <code>pure</code> functions.</p>
+<p>The difference between <code>staticcall</code> and <code>delegatecall</code> is that <code>staticcall</code> makes calls to only <code>view</code> or <code>pure</code> functions. A <code>staticcall</code> will revert if it makes a call to a function in a smart contract that changes the state of that smart contract.</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 

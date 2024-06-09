@@ -273,7 +273,6 @@ bytes with a length of 40, corresponding to slot 0, the value would be found at 
 32 bytes of the entire thing, while the remaining 8 bytes would be in the next slot, <code>keccak256(0) + 1</code></p>
 <p>We're going to store a pretty long <code>bytes</code> value now.</p>
 <pre><code class="language-solidity">// SPDX-License-Identifier: GPL-3.0
-// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
 contract MyContract {
@@ -332,7 +331,7 @@ the first 32 bytes of the value we stored, while, <code>getSecondBytesSection</c
 it only contains values for the first 8 bytes. Using both data, we can see that our <code>bytes</code> value was spread out
 across two storage slots. We can try to concatenate them and return all the bytes, but that would involve moving
 them into memory, and then returning the proper ABI encoded memory data for the <code>bytes</code>. We would look at that when
-we get to the <a href="">Variable Storage In Memory</a> section of this book.</p>
+we get to the <a href="../4-3-variable-storage-in-memory/4-3-0-variable-storage-in-memory.html">Variable Storage In Memory</a> section of this book.</p>
 <blockquote>
 <p>💡 <code>bytes</code> and <code>string</code> share the same characteristics in storage and memory. The same way <code>bytes</code> are stored in
 storage and memory, that is the same way <code>string</code> are stored. The only differences are that each <code>string</code> character is
