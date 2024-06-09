@@ -55,7 +55,7 @@ contract Yul {
 }
 ```
 
-`and(a, b)` is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running `a && b`.
+`and(a, b)` is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running `a & b`.
 
 ## Or, `or(a, b)`
 
@@ -73,7 +73,7 @@ contract Yul {
 }
 ```
 
-`or(a, b)` is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running `a || b`.
+`or(a, b)` is a Yul function that takes in two numbers as arguments. It returns the new value which is the value returned by running `a | b`.
 
 ## Xor, `xor(a, b)`
 

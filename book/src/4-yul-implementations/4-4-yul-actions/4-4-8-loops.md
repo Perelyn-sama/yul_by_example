@@ -40,7 +40,7 @@ To make a `for` loop act like a `while` loop, this is how we do it.
 pragma solidity ^0.8.0;
 
 contract Yul {
-    function infiniteLoop() public pure returns (bytes32) {
+    function whileLoop() public pure returns (bytes32) {
         assembly {
             let x := 0
             for { } lt(x, 10) { } {

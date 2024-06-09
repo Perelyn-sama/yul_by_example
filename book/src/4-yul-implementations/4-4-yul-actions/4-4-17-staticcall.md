@@ -2,7 +2,7 @@
 
 ---
 
-The difference between `staticcall` and `delegatecall` is that `staticcall` makes calls to only `view` or `pure` functions.
+The difference between `staticcall` and `delegatecall` is that `staticcall` makes calls to only `view` or `pure` functions. A `staticcall` will revert if it makes a call to a function in a smart contract that changes the state of that smart contract.
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
