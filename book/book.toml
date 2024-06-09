@@ -1,6 +1,16 @@
 [book]
-authors = ["Perelyn"]
+title = "Yul By Example"
+description = "A beginner's guide to basic Solidity implementations in inline Assembly."
+authors = [
+    "Perelyn (@okohebina <Twitter>)",
+    "fps (@0xfps <Twitter>)",
+    "Aryan Malik (@0xscratch <GitHub>)"
+]
 language = "en"
 multilingual = false
 src = "src"
-title = "book"
+
+[build]
+build-dir = "book"                # the directory where the output is placed
+create-missing = true             # whether or not to create missing pages
+use-default-preprocessors = true  # use the default preprocessors

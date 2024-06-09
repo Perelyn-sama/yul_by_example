@@ -1,16 +1,16 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Array - book</title>
+        <title>Introduction - Yul By Example</title>
 
 
         <!-- Custom HTML head -->
         
-        <meta name="description" content="">
+        <meta name="description" content="A beginner&#x27;s guide to basic Solidity implementations in inline Assembly.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -31,7 +31,8 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -60,40 +61,71 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="Array.html" class="active"><strong aria-hidden="true">1.</strong> Array</a></li><li class="chapter-item expanded "><a href="Bitwise.html"><strong aria-hidden="true">2.</strong> Bitwise</a></li><li class="chapter-item expanded "><a href="Call.html"><strong aria-hidden="true">3.</strong> Call</a></li><li class="chapter-item expanded "><a href="Calldata.html"><strong aria-hidden="true">4.</strong> Calldata</a></li><li class="chapter-item expanded "><a href="Conditionals.html"><strong aria-hidden="true">5.</strong> Conditionals</a></li><li class="chapter-item expanded "><a href="Counter.html"><strong aria-hidden="true">6.</strong> Counter</a></li><li class="chapter-item expanded "><a href="Enums.html"><strong aria-hidden="true">7.</strong> Enums</a></li><li class="chapter-item expanded "><a href="Errors.html"><strong aria-hidden="true">8.</strong> Errors</a></li><li class="chapter-item expanded "><a href="EtherWallet.html"><strong aria-hidden="true">9.</strong> Ether Wallet</a></li><li class="chapter-item expanded "><a href="Events.html"><strong aria-hidden="true">10.</strong> Events</a></li><li class="chapter-item expanded "><a href="Fallback.html"><strong aria-hidden="true">11.</strong> Fallback</a></li><li class="chapter-item expanded "><a href="ForLoop.html"><strong aria-hidden="true">12.</strong> For Loop</a></li><li class="chapter-item expanded "><a href="Functions.html"><strong aria-hidden="true">13.</strong> Functions</a></li><li class="chapter-item expanded "><a href="Hash.html"><strong aria-hidden="true">14.</strong> Hash</a></li><li class="chapter-item expanded "><a href="HelloWorld.html"><strong aria-hidden="true">15.</strong> Hello World</a></li><li class="chapter-item expanded "><a href="IsContract.html"><strong aria-hidden="true">16.</strong> Is Contract</a></li><li class="chapter-item expanded "><a href="Mapping.html"><strong aria-hidden="true">17.</strong> Mapping</a></li><li class="chapter-item expanded "><a href="SafeOperations.html"><strong aria-hidden="true">18.</strong> Safe Operations</a></li><li class="chapter-item expanded "><a href="SendEther.html"><strong aria-hidden="true">19.</strong> Send Ether</a></li><li class="chapter-item expanded "><a href="SignarureVerification.html"><strong aria-hidden="true">20.</strong> Signature Verification</a></li><li class="chapter-item expanded "><a href="SimpleStorage.html"><strong aria-hidden="true">21.</strong> Simple Storage</a></li><li class="chapter-item expanded "><a href="Structs.html"><strong aria-hidden="true">22.</strong> Structs</a></li><li class="chapter-item expanded "><a href="Types.html"><strong aria-hidden="true">23.</strong> Types</a></li><li class="chapter-item expanded "><a href="Unchecked.html"><strong aria-hidden="true">24.</strong> Unchecked</a></li><li class="chapter-item expanded "><a href="YulERC20.html"><strong aria-hidden="true">25.</strong> Yul ERC20</a></li></ol>
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="1-introduction/1-1-introduction.html" class="active"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="1-introduction/1-2-what-is-yul.html"><strong aria-hidden="true">2.</strong> What Is Yul?</a></li><li class="chapter-item expanded "><a href="1-introduction/1-3-why-is-yul-important.html"><strong aria-hidden="true">3.</strong> Why Is Yul Important?</a></li><li class="chapter-item expanded "><a href="1-introduction/1-4-yul's-advantages.html"><strong aria-hidden="true">4.</strong> Yul's Advantages</a></li><li class="chapter-item expanded "><a href="1-introduction/1-5-yul's-disadvantage.html"><strong aria-hidden="true">5.</strong> Yul's Disadvantage</a></li><li class="chapter-item expanded "><a href="1-introduction/1-6-code-layout.html"><strong aria-hidden="true">6.</strong> Code Layout</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Authors</li><li class="chapter-item expanded "><a href="2-authors/2-1-authors.html"><strong aria-hidden="true">7.</strong> Authors</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Solidity's Storage And Memory</li><li class="chapter-item expanded "><a href="3-solidity's-storage-and-memory/3-1-solidity's-storage-and-memory.html"><strong aria-hidden="true">8.</strong> Solidity's Storage And Memory</a></li><li class="chapter-item expanded "><a href="3-solidity's-storage-and-memory/3-2-solidity's-storage-and-memory-layout.html"><strong aria-hidden="true">9.</strong> Solidity's Storage And Memory Layout</a></li><li class="chapter-item expanded "><a href="3-solidity's-storage-and-memory/3-3-using-yul-to-read-and-write-directly-to-storage-and-memory.html"><strong aria-hidden="true">10.</strong> Using Yul To Read And Write Directly To Storage And Memory</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Yul Implementations</li><li class="chapter-item expanded "><a href="4-yul-implementations/4-1-starting-yul-in-a-solidity-contract.html"><strong aria-hidden="true">11.</strong> Starting Yul In A Smart Contract</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-0-variable-storage-in-storage.html"><strong aria-hidden="true">12.</strong> Variable Storage In Storage</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-1-uint8-uint128-uint256.html"><strong aria-hidden="true">12.1.</strong> uint8, uint128, uint256</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-2-int8-int128-int256.html"><strong aria-hidden="true">12.2.</strong> int8, int128, int256</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-3-bytes1-bytes16-bytes32.html"><strong aria-hidden="true">12.3.</strong> bytes1, bytes16, bytes32</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-4-bytes.html"><strong aria-hidden="true">12.4.</strong> bytes</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-5-string.html"><strong aria-hidden="true">12.5.</strong> string</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-6-address.html"><strong aria-hidden="true">12.6.</strong> address</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-7-struct.html"><strong aria-hidden="true">12.7.</strong> struct</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-8-mapping.html"><strong aria-hidden="true">12.8.</strong> mapping</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-9-enum.html"><strong aria-hidden="true">12.9.</strong> enum</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-10-custom-types.html"><strong aria-hidden="true">12.10.</strong> Custom Types</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-2-variable-storage-in-storage/4-2-11-arrays.html"><strong aria-hidden="true">12.11.</strong> Arrays</a></li></ol></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-0-variable-storage-in-memory.html"><strong aria-hidden="true">13.</strong> Variable Storage In Memory</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-1-uint8-uint128-uint256.html"><strong aria-hidden="true">13.1.</strong> uint8, uint128, uint256</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-2-int8-int128-int256.html"><strong aria-hidden="true">13.2.</strong> int8, int128, int256</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-3-bytes1-bytes16-bytes32.html"><strong aria-hidden="true">13.3.</strong> bytes1, bytes16, bytes32</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-4-bytes.html"><strong aria-hidden="true">13.4.</strong> bytes</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-5-string.html"><strong aria-hidden="true">13.5.</strong> string</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-6-address.html"><strong aria-hidden="true">13.6.</strong> address</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-7-custom-types.html"><strong aria-hidden="true">13.7.</strong> Custom Types</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-8-arrays.html"><strong aria-hidden="true">13.8.</strong> Arrays</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-9-order-of-memory-and-calldata-storage.html"><strong aria-hidden="true">13.9.</strong> Order Of Memory And Calldata Storage</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-3-variable-storage-in-memory/4-3-10-struct.html"><strong aria-hidden="true">13.10.</strong> struct</a></li></ol></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-0-yul-actions.html"><strong aria-hidden="true">14.</strong> Yul Actions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-1-addition.html"><strong aria-hidden="true">14.1.</strong> Addition</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-2-subtraction.html"><strong aria-hidden="true">14.2.</strong> Subtraction</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-3-multiplication.html"><strong aria-hidden="true">14.3.</strong> Multiplication</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-4-division.html"><strong aria-hidden="true">14.4.</strong> Division</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-5-bitwise.html"><strong aria-hidden="true">14.5.</strong> Bitwise</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-6-conditionals.html"><strong aria-hidden="true">14.6.</strong> Conditionals</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-7-functions.html"><strong aria-hidden="true">14.7.</strong> Functions</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-8-loops.html"><strong aria-hidden="true">14.8.</strong> Loops</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-9-errors.html"><strong aria-hidden="true">14.9.</strong> Errors</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-10-hash.html"><strong aria-hidden="true">14.10.</strong> Hash</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-11-is-contract.html"><strong aria-hidden="true">14.11.</strong> Is Contract</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-12-ether-balance.html"><strong aria-hidden="true">14.12.</strong> Ether Balance</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-13-events.html"><strong aria-hidden="true">14.13.</strong> Events</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-14-send-ether.html"><strong aria-hidden="true">14.14.</strong> Send Ether</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-15-signature-verification.html"><strong aria-hidden="true">14.15.</strong> Signature Verification</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-16-call.html"><strong aria-hidden="true">14.16.</strong> call</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-17-staticcall.html"><strong aria-hidden="true">14.17.</strong> staticcall</a></li><li class="chapter-item expanded "><a href="4-yul-implementations/4-4-yul-actions/4-4-18-delegatecall.html"><strong aria-hidden="true">14.18.</strong> delegatecall</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><li class="part-title">Projects</li><li class="chapter-item expanded "><a href="5-projects/5-0-projects.html"><strong aria-hidden="true">15.</strong> Projects</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><li class="part-title">Sources And References</li><li class="chapter-item expanded "><a href="6-sources-and-references/6-0-sources-and-references.html"><strong aria-hidden="true">16.</strong> Sources And References</a></li></ol>
             </div>
-            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
         </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
 
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -109,7 +141,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">book</h1>
+                    <h1 class="menu-title">Yul By Example</h1>
 
                     <div class="right-buttons">
                         <a href="print.html" title="Print this book" aria-label="Print this book">
@@ -141,68 +173,20 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="array"><a class="header" href="#array">Array</a></h1>
-<pre><code class="language-solidity">contract Array {
-    uint8[3] public fixedU8Array;
-    uint8[] public dynamicU8Array;
-    
-    uint256[3] public fixedU256Array;
-    uint256[] public dynamicU256Array;
-}
-
-/*
-*   Array Variable    |   Slot(s) Occupied    |   Values Stored At Slot(s) [sload(slot)]
-*   __________________|_______________________|_____________________________________________________
-*   fixedU8Array      |   0 - 2               |   0 &lt;= x &lt;= 2 
-*   dynamicU8Array    |   3                   |   keccak256(3) + (0 &lt;= x &lt; dynamicU8Array.length)
-*   fixedU256Array    |   4 - 6               |   4 &lt;= x &lt;= 6
-*   dynamicU256Array  |   7                   |   keccak256(7) + (0 &lt;= x &lt; dynamicU256Array.length)
-*   __________________|_______________________|_____________________________________________________
-*/
-</code></pre>
-<h2 id="array-storage"><a class="header" href="#array-storage">Array Storage</a></h2>
-<p>Arrays in Yul take up slots depending on their array type. Array types include:</p>
-<ul>
-<li>Fixed Array, i.e. <code>fixedU256Array</code></li>
-<li>Dynamic Array, i.e. <code>dynamicU256Array</code></li>
-</ul>
-<p>Because the length of a fixed arrays are known, they take up slots as much as their length. i.e. <code>fixedU256Array</code> is of length <code>3</code>, therefore, it will take up 3 slots starting from its current slot. However, slot taking of a fixed array is also controlled by its data type, uint256 will take up an entire slot. So there will be as many slots occupied as 3 <code>uint256</code> numbers in the <code>fixedU256Array</code>.</p>
-<p>In the case of <code>fixedU8Array</code>, which has a known length of 3, because it's of type <code>uint8</code>, it will be packed in that slot where it should start from.</p>
-<p>Dynamic arrays are different, because, their lengths are not known, so there is no set amount of slots allocated for it, therefore, at their slots, which we will call <code>slot</code>, the length of the array is stored. Then the array elements can be found starting at slot <code>keccak256(slot)</code> and spanning up till <code>keccak256(slot)</code> + ((the length of the array) - 1).</p>
-<p>If dynamicU256Array should have 5 elements, at its slot in storage, which we will assume as <code>c</code>, the value <code>5</code> will be stored. Then to get these 5 elements, they will be found at:<br><br>
-Index 0 =&gt; <code>keccak256(c) + 0</code><br>
-Index 1 =&gt; <code>keccak256(c) + 1</code><br>
-Index 2 =&gt; <code>keccak256(c) + 2</code><br>
-Index 3 =&gt; <code>keccak256(c) + 3</code><br>
-Index 4 =&gt; <code>keccak256(c) + 4</code><br><br>
-All 5 elements. Adding one element to the array will increment the value at slot <code>c</code> to <code>6</code> and also add an:<br><br>
-Index 5 =&gt; <code>keccak256(c) + 5</code><br><br>
-Which is the <code>6th</code> element.</p>
-<h2 id="reading-from-an-array"><a class="header" href="#reading-from-an-array">Reading From An Array</a></h2>
-<p>While reading the elements of the <code>fixedU256Array</code> is simple, because, type <code>uint256</code> takes up 32 bytes, the same cannot be said for the <code>fixexU8Array</code> as they're packed and care would be taken to avoid messing up the value stored at that slot. We can always call an <code>sload(slot)</code> to get the value of any index stored at any slot.</p>
-<p>However, for <code>fixedU8Array</code> on initialization:</p>
-<pre><code class="language-solidity">contract Array {
-    uint8[3] public fixedU8Array;
-
-    constructor() {
-        // Initialize array variables.
-        fixedU8Array = [1, 2, 3];
-    }
-}
-</code></pre>
-<p>Once the slot where the values of the <code>fixedU8Array</code> has been located, which we shall address as <code>loc</code>, we can call a simple <code>sload(loc)</code> to get the value stored at that slot, which will be returned as:</p>
-<pre><code class="language-solidity">0x0000000000000000000000000000000000000000000000000000000000030201
-</code></pre>
-<p>It will be packed, as stated earlier. We can then use a masking to return any index in the array based of the <code>uint8</code> type, <code>1 byte</code> by calculating its offset precisely.</p>
-<h3 id="more-info"><a class="header" href="#more-info">More Info</a></h3>
-<p><a href="https://rb.gy/yvbfwf">Click to read more.</a></p>
+                        <h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<hr />
+<p>Hello there!</p>
+<p>This is a book about Yul, a low-level, intermediate language written alongside Solidity that can be compiled to bytecode for different backends [<a href="https://docs.soliditylang.org/en/latest/yul.html#yul">1</a>].</p>
+<p>Over the course of this book, we are going to go through what Yul is, why it is important, its advantage and disadvantage over Solidity and its implementations in a smart contract.</p>
+<p>Also, we will see how storage and memory are laid out in Solidity and how we would harness the power of Yul to infiltrate and modify these to our taste.</p>
+<p>Enjoy!</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
 
-                            <a rel="next" href="Bitwise.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="1-introduction/1-2-what-is-yul.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -213,7 +197,7 @@ Which is the <code>6th</code> element.</p>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
 
-                    <a rel="next" href="Bitwise.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="1-introduction/1-2-what-is-yul.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
@@ -255,5 +239,6 @@ Which is the <code>6th</code> element.</p>
         <!-- Custom JS scripts -->
 
 
+    </div>
     </body>
 </html>
