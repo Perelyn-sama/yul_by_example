@@ -58,7 +58,7 @@ In a function, to return a value loaded from the storage, without declaring a re
 
 > `return(position, size)`
 
-If we called the `getUint8` function to return a `uint8`, Solidity will handle the conversion for us and we will see `16` returned. However, we will be returning in bytes32 over the course of this book to understand the actual storage and memory layouts of the EVM.
+If we called the `getUint8` function to return a `uint8`, Solidity will handle the conversion for us and we will see `16` returned. However, we will be returning in `bytes32` over the course of this book to understand the actual storage and memory layouts of the EVM.
 
 Calling the `getUint8` function will return `0x0000000000000000000000000000000000000000000000000000000000000010`, which when converted to decimal, equals to `16`, the value we stored.
 

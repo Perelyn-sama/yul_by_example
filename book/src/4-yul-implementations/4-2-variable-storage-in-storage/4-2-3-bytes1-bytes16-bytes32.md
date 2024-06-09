@@ -87,6 +87,7 @@ This will return `0x00000000000000000000000000000000000000000000000000000000aabb
 
 Setting a `bytes[n]` variable in a function will right-pad it to 32 bytes. Whereas, directly assigning the variable in a Yul block or in storage will handle it normally by left padding it.
 
+To get a knowledge of which type of `bytes[n]` does what, refer to [this part of the book](../4-3-variable-storage-in-memory/4-3-3-bytes1-bytes16-bytes32.md#padding).
 
 ### bytes16
 ```solidity

@@ -8,5 +8,5 @@ similar in many ways to Assembly but with higher-level features that make it eas
 
 Yul was previously called **Julia** or **Iulia**.
 
-Within the context of smart contract development, Yul is usually referred to as **Inline Assembly**. As it is very 
+Within the context of smart contract development, Yul is usually referred to as **Inline Assembly**, as it is very 
 similar to Assembly and is written within functions in smart contract code.

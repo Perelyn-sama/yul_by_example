@@ -119,7 +119,6 @@ We're going to store a pretty long `bytes` value now.
 
 ```solidity
 // SPDX-License-Identifier: GPL-3.0
-// SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.0;
 
 contract MyContract {
@@ -180,7 +179,7 @@ the first 32 bytes of the value we stored, while, `getSecondBytesSection` would 
 it only contains values for the first 8 bytes. Using both data, we can see that our `bytes` value was spread out 
 across two storage slots. We can try to concatenate them and return all the bytes, but that would involve moving 
 them into memory, and then returning the proper ABI encoded memory data for the `bytes`. We would look at that when 
-we get to the [Variable Storage In Memory]() section of this book.
+we get to the [Variable Storage In Memory](../4-3-variable-storage-in-memory/4-3-0-variable-storage-in-memory.md) section of this book.
 
 > 💡 `bytes` and `string` share the same characteristics in storage and memory. The same way `bytes` are stored in 
 storage and memory, that is the same way `string` are stored. The only differences are that each `string` character is 

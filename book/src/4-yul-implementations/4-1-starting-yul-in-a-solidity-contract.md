@@ -61,4 +61,4 @@ contract Yul {
 }
 ```
 
-> 🚨 Yul does not recognize global variables, it only recognized local variables within functions, function parameters and named `return` variables.
+> 🚨 Yul does not recognize Solidity global or state variables, it only recognized local variables within functions, function parameters and named `return` variables.
