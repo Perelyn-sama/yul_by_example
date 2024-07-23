@@ -72,7 +72,7 @@
 ---
 
 # Projects
-- [Projects](5-projects/5-0-projects.md)
+<!-- - [Projects](5-projects/5-0-projects.md) -->
 
 ---
 
